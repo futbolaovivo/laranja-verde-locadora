@@ -48,9 +48,11 @@ const QuemSomos = () => {
             </div>
           </div>
           <div className="bg-muted rounded-lg p-8">
-            <div className="w-full h-64 bg-gradient-to-br from-gray-200 to-gray-300 rounded-lg flex items-center justify-center">
-              <Users className="w-24 h-24 text-gray-500" />
-            </div>
+            <img 
+              src="/lovable-uploads/0f6022ae-3fd3-4461-b84f-f888ecfd47b8.png" 
+              alt="Aperto de mãos entregando chaves do carro" 
+              className="w-full h-64 object-cover rounded-lg"
+            />
           </div>
         </div>
 
