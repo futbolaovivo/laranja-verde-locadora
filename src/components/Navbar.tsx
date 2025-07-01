@@ -11,10 +11,7 @@ const Navbar = () => {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <div className="flex items-center">
-            <div className="text-white">
-              <span className="text-2xl font-bold tracking-wider">MOVI </span>
-              <span className="text-lg font-inter font-light tracking-normal">LOCADORA DE VEÍCULO</span>
-            </div>
+            <img src="/lovable-uploads/377a4e9d-1a5b-4b35-b114-6e80af608e36.png" alt="MOVI Locadora" className="h-10" />
           </div>
 
           {/* Desktop Navigation */}
