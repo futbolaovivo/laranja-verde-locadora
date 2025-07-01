@@ -8,8 +8,8 @@ const Veiculos = () => {
     <div className="min-h-screen bg-background">
       <Navbar />
       <SearchForm />
-      <VehicleFilters />
       <CarsSection />
+      <VehicleFilters />
     </div>
   );
 };
