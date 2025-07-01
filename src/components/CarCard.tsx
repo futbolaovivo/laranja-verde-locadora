@@ -66,9 +66,9 @@ const CarCard = ({ name, image, category, passengers, transmission, fuel, dailyP
       
       <CardFooter className="p-4 pt-0 flex justify-center">
         <Button 
-          variant={status === 'available' ? 'default' : 'secondary'}
+          variant={status === 'available' ? 'default' : 'destructive'}
           disabled={status === 'rented'}
-          className="w-full"
+          className={`w-full ${status === 'available' ? 'bg-green-600 hover:bg-green-700' : 'bg-red-600 hover:bg-red-700'}`}
         >
           {status === 'available' ? 'Reservar' : 'Indisponível'}
         </Button>
