@@ -20,17 +20,14 @@ const Navbar = () => {
             <a href="/" className="text-foreground hover:text-primary transition-colors">
               Início
             </a>
-            <a href="/#carros" className="text-foreground hover:text-primary transition-colors">
-              Nossos Carros
-            </a>
             <a href="/quem-somos" className="text-foreground hover:text-primary transition-colors">
               Quem Somos
             </a>
             <a href="/contato" className="text-foreground hover:text-primary transition-colors">
               Contato
             </a>
-            <Button variant="default" size="sm">
-              Solicitar Orçamento
+            <Button variant="default" size="sm" asChild>
+              <a href="/contato">Solicitar Orçamento</a>
             </Button>
           </div>
 
@@ -53,17 +50,14 @@ const Navbar = () => {
               <a href="/" className="text-foreground hover:text-primary transition-colors">
                 Início
               </a>
-              <a href="/#carros" className="text-foreground hover:text-primary transition-colors">
-                Nossos Carros
-              </a>
               <a href="/quem-somos" className="text-foreground hover:text-primary transition-colors">
                 Quem Somos
               </a>
               <a href="/contato" className="text-foreground hover:text-primary transition-colors">
                 Contato
               </a>
-              <Button variant="default" size="sm" className="w-fit">
-                Solicitar Orçamento
+              <Button variant="default" size="sm" className="w-fit" asChild>
+                <a href="/contato">Solicitar Orçamento</a>
               </Button>
             </div>
           </div>
