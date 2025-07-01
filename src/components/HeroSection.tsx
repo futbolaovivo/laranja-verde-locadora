@@ -1,13 +1,10 @@
 import { Button } from "@/components/ui/button";
 import { Check } from "lucide-react";
 import heroImage from "@/assets/hero-car-modern.jpg";
-
 const HeroSection = () => {
-  return (
-    <section 
-      className="relative min-h-screen flex items-center justify-center bg-cover bg-center bg-no-repeat"
-      style={{ backgroundImage: `url(${heroImage})` }}
-    >
+  return <section className="relative min-h-screen flex items-center justify-center bg-cover bg-center bg-no-repeat" style={{
+    backgroundImage: `url(${heroImage})`
+  }}>
       {/* Overlay */}
       <div className="absolute inset-0 bg-black/40"></div>
       
@@ -48,14 +45,12 @@ const HeroSection = () => {
             <Button size="lg" className="bg-secondary hover:bg-secondary/90 text-white">
               Ver Categorias
             </Button>
-            <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-black">
+            <Button size="lg" variant="outline" className="border-white hover:bg-white text-zinc-950">
               Solicitar Contato
             </Button>
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default HeroSection;
