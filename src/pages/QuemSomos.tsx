@@ -144,9 +144,23 @@ const QuemSomos = () => {
         {/* Visita */}
         <div className="text-center">
           <h2 className="text-2xl font-bold text-foreground mb-4">Gostaria de nos fazer uma visita?</h2>
-          <p className="text-muted-foreground">
+          <p className="text-muted-foreground mb-8">
             Clique aqui e confira nosso endereço e o mapa de como <strong>chegar até a nós.</strong>
           </p>
+          
+          {/* Mapa */}
+          <div className="w-full max-w-4xl mx-auto">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3852.8234567890123!2d-55.9146912!3d-13.081501!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x93a0f3ecc15b976f%3A0xb45b6ae1594100e2!2sAv.%20Goi%C3%A1s%2C%201374%20-%20Alvorada%2C%20Lucas%20do%20Rio%20Verde%20-%20MT%2C%2078455-000!5e0!3m2!1spt-BR!2sbr!4v1693123456789!5m2!1spt-BR!2sbr"
+              width="100%"
+              height="400"
+              style={{ border: 0 }}
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              className="rounded-lg shadow-lg"
+            />
+          </div>
         </div>
       </div>
     </div>
