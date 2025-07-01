@@ -171,20 +171,6 @@ const Contato = () => {
                 />
               </div>
 
-              <div>
-                <Label htmlFor="verificacao">Prove que você não é um robô ()*</Label>
-                <Input
-                  id="verificacao"
-                  name="verificacao"
-                  type="text"
-                  value={formData.verificacao}
-                  onChange={handleInputChange}
-                  placeholder="Sua resposta"
-                  required
-                  className="mt-1"
-                />
-              </div>
-
               <Button type="submit" className="w-full bg-secondary hover:bg-secondary/80">
                 Solicitar orçamento
               </Button>
