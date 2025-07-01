@@ -6,7 +6,7 @@ const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <nav className="bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b border-border sticky top-0 z-50">
+    <nav className="bg-primary backdrop-blur border-b border-primary-foreground/20 sticky top-0 z-50">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
@@ -16,16 +16,16 @@ const Navbar = () => {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
-            <a href="/" className="text-foreground hover:text-primary transition-colors">
+            <a href="/" className="text-white hover:text-white/80 transition-colors">
               Início
             </a>
-            <a href="/quem-somos" className="text-foreground hover:text-primary transition-colors">
+            <a href="/quem-somos" className="text-white hover:text-white/80 transition-colors">
               Quem Somos
             </a>
-            <a href="/contato" className="text-foreground hover:text-primary transition-colors">
+            <a href="/contato" className="text-white hover:text-white/80 transition-colors">
               Contato
             </a>
-            <Button variant="default" size="sm" asChild>
+            <Button variant="default" size="sm" className="bg-secondary hover:bg-secondary/90 text-white" asChild>
               <a href="/contato">Solicitar Orçamento</a>
             </Button>
           </div>
@@ -35,6 +35,7 @@ const Navbar = () => {
             <Button
               variant="ghost"
               size="sm"
+              className="text-white hover:bg-white/20"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
             >
               {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
@@ -44,18 +45,18 @@ const Navbar = () => {
 
         {/* Mobile Navigation */}
         {isMenuOpen && (
-          <div className="md:hidden py-4 border-t border-border">
+          <div className="md:hidden py-4 border-t border-white/20">
             <div className="flex flex-col space-y-4">
-              <a href="/" className="text-foreground hover:text-primary transition-colors">
+              <a href="/" className="text-white hover:text-white/80 transition-colors">
                 Início
               </a>
-              <a href="/quem-somos" className="text-foreground hover:text-primary transition-colors">
+              <a href="/quem-somos" className="text-white hover:text-white/80 transition-colors">
                 Quem Somos
               </a>
-              <a href="/contato" className="text-foreground hover:text-primary transition-colors">
+              <a href="/contato" className="text-white hover:text-white/80 transition-colors">
                 Contato
               </a>
-              <Button variant="default" size="sm" className="w-fit" asChild>
+              <Button variant="default" size="sm" className="bg-secondary hover:bg-secondary/90 text-white w-fit" asChild>
                 <a href="/contato">Solicitar Orçamento</a>
               </Button>
             </div>
