@@ -14,7 +14,7 @@ const QuemSomos = () => {
           <div>
             <div className="w-48 h-48 mx-auto mb-8 flex items-center justify-center">
               <img 
-                src="/lovable-uploads/75717a4b-8d0a-4734-8ec8-4d4b60c3660d.png" 
+                src="/lovable-uploads/42100d53-07cf-4556-a1df-362f273f5056.png" 
                 alt="Qualidade Garantida" 
                 className="w-full h-full object-contain"
               />
