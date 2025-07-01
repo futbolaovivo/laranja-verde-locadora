@@ -1,12 +1,36 @@
 import { Menu, X } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
+  const [prevScrollY, setPrevScrollY] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      
+      if (currentScrollY > prevScrollY && currentScrollY > 80) {
+        // Scrolling down and past 80px threshold
+        setIsVisible(false);
+      } else {
+        // Scrolling up or at the top
+        setIsVisible(true);
+      }
+      
+      setPrevScrollY(currentScrollY);
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [prevScrollY]);
 
   return (
-    <nav className="bg-primary backdrop-blur border-b border-primary-foreground/20 sticky top-0 z-50">
+    <nav className={`bg-primary backdrop-blur border-b border-primary-foreground/20 sticky top-0 z-50 transition-transform duration-300 ${
+      isVisible ? "translate-y-0" : "-translate-y-full"
+    }`}>
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
