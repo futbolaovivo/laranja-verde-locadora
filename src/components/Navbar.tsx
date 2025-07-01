@@ -1,4 +1,4 @@
-import { Car, Menu, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 
@@ -10,9 +10,11 @@ const Navbar = () => {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <div className="flex items-center space-x-2">
-            <Car className="h-8 w-8 text-primary" />
-            <span className="text-2xl font-bold text-primary">MOVI</span>
+          <div className="flex items-center">
+            <div className="bg-gradient-to-r from-orange-500 to-orange-600 text-white px-4 py-2 rounded-lg shadow-lg">
+              <span className="text-2xl font-bold tracking-wider">MOVI</span>
+              <div className="text-xs font-medium opacity-90 -mt-1">RENT A CAR</div>
+            </div>
           </div>
 
           {/* Desktop Navigation */}
