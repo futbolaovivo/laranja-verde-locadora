@@ -12,11 +12,12 @@ const QuemSomos = () => {
         {/* Qualidade Garantida Section */}
         <div className="grid md:grid-cols-2 gap-12 items-center mb-16">
           <div>
-            <div className="w-48 h-48 mx-auto bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-full flex items-center justify-center mb-8">
-              <div className="bg-yellow-500 rounded-full p-8 text-center">
-                <h3 className="text-2xl font-bold text-white">QUALIDADE</h3>
-                <h3 className="text-2xl font-bold text-white">GARANTIDA</h3>
-              </div>
+            <div className="w-48 h-48 mx-auto mb-8 flex items-center justify-center">
+              <img 
+                src="/lovable-uploads/75717a4b-8d0a-4734-8ec8-4d4b60c3660d.png" 
+                alt="Qualidade Garantida" 
+                className="w-full h-full object-contain"
+              />
             </div>
           </div>
           
