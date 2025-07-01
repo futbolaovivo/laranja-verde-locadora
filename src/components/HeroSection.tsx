@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Check } from "lucide-react";
-import heroImage from "@/assets/virtus-black.jpg";
+import heroImage from "@/assets/virtus-landscape.jpg";
 const HeroSection = () => {
   return <section className="relative min-h-screen flex items-center justify-center bg-cover bg-center bg-no-repeat" style={{
     backgroundImage: `url(${heroImage})`
