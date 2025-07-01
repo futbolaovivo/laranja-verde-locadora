@@ -42,11 +42,11 @@ const HeroSection = () => {
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4">
-            <Button size="lg" className="bg-secondary hover:bg-secondary/90 text-white">
-              Ver Categorias
+            <Button size="lg" className="bg-secondary hover:bg-secondary/90 text-white" asChild>
+              <a href="/veiculos">Ver Categorias</a>
             </Button>
-            <Button size="lg" variant="outline" className="border-white hover:bg-white text-zinc-950">
-              Solicitar Contato
+            <Button size="lg" variant="outline" className="border-white hover:bg-white text-zinc-950" asChild>
+              <a href="/contato">Solicitar Contato</a>
             </Button>
           </div>
         </div>
