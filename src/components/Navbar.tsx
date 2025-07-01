@@ -17,16 +17,16 @@ const Navbar = () => {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
-            <a href="#" className="text-foreground hover:text-primary transition-colors">
+            <a href="/" className="text-foreground hover:text-primary transition-colors">
               Início
             </a>
             <a href="#carros" className="text-foreground hover:text-primary transition-colors">
               Nossos Carros
             </a>
-            <a href="#sobre" className="text-foreground hover:text-primary transition-colors">
-              Sobre
+            <a href="/quem-somos" className="text-foreground hover:text-primary transition-colors">
+              Quem Somos
             </a>
-            <a href="#contato" className="text-foreground hover:text-primary transition-colors">
+            <a href="/contato" className="text-foreground hover:text-primary transition-colors">
               Contato
             </a>
             <Button variant="default" size="sm">
@@ -50,16 +50,16 @@ const Navbar = () => {
         {isMenuOpen && (
           <div className="md:hidden py-4 border-t border-border">
             <div className="flex flex-col space-y-4">
-              <a href="#" className="text-foreground hover:text-primary transition-colors">
+              <a href="/" className="text-foreground hover:text-primary transition-colors">
                 Início
               </a>
               <a href="#carros" className="text-foreground hover:text-primary transition-colors">
                 Nossos Carros
               </a>
-              <a href="#sobre" className="text-foreground hover:text-primary transition-colors">
-                Sobre
+              <a href="/quem-somos" className="text-foreground hover:text-primary transition-colors">
+                Quem Somos
               </a>
-              <a href="#contato" className="text-foreground hover:text-primary transition-colors">
+              <a href="/contato" className="text-foreground hover:text-primary transition-colors">
                 Contato
               </a>
               <Button variant="default" size="sm" className="w-fit">
