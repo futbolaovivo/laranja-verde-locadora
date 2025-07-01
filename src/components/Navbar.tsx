@@ -12,7 +12,8 @@ const Navbar = () => {
           {/* Logo */}
           <div className="flex items-center">
             <div className="bg-gradient-to-r from-orange-500 to-orange-600 text-white px-4 py-2 rounded-lg shadow-lg">
-              <span className="text-2xl font-bold tracking-wider">MOVI rent a car</span>
+              <span className="text-2xl font-bold tracking-wider">MOVI </span>
+              <span className="text-lg font-inter font-light tracking-normal">rent a car</span>
             </div>
           </div>
 
