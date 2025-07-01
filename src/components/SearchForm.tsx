@@ -2,112 +2,101 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Card, CardContent } from "@/components/ui/card";
-import { Search, MapPin, Calendar, Users } from "lucide-react";
+import { Search, Car, Tag, Settings, RotateCcw } from "lucide-react";
 
 const SearchForm = () => {
   const [searchData, setSearchData] = useState({
-    location: "",
-    pickupDate: "",
-    returnDate: "",
-    passengers: ""
+    search: "",
+    category: "",
+    brand: "",
+    transmission: ""
   });
 
-  const handleSearch = () => {
-    // Implementar lógica de busca
-    console.log("Busca realizada:", searchData);
+  const clearFilters = () => {
+    setSearchData({
+      search: "",
+      category: "",
+      brand: "",
+      transmission: ""
+    });
   };
 
   return (
-    <section className="py-16 bg-muted/30">
+    <section className="py-8 bg-background border-b">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Encontre o Carro Ideal
-          </h2>
-          <p className="text-lg text-muted-foreground">
-            Busque por localização, data e número de passageiros
-          </p>
+        <div className="flex flex-col lg:flex-row items-center gap-4 max-w-6xl mx-auto">
+          {/* Campo de busca */}
+          <div className="relative flex-1 min-w-[300px]">
+            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+            <Input
+              placeholder="Busque por marca ou modelo..."
+              value={searchData.search}
+              onChange={(e) => setSearchData({...searchData, search: e.target.value})}
+              className="pl-10 h-12 text-base"
+            />
+          </div>
+
+          {/* Filtro Categoria */}
+          <div className="flex items-center gap-2 min-w-[140px]">
+            <Car className="h-4 w-4 text-muted-foreground" />
+            <Select onValueChange={(value) => setSearchData({...searchData, category: value})}>
+              <SelectTrigger className="h-12">
+                <SelectValue placeholder="Categoria" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="economico">Econômico</SelectItem>
+                <SelectItem value="compacto">Compacto</SelectItem>
+                <SelectItem value="intermediario">Intermediário</SelectItem>
+                <SelectItem value="suv">SUV</SelectItem>
+                <SelectItem value="pickup">Pickup</SelectItem>
+                <SelectItem value="suv-compacto">SUV Compacto</SelectItem>
+              </SelectContent>
+            </Select>
+          </div>
+
+          {/* Filtro Marca */}
+          <div className="flex items-center gap-2 min-w-[120px]">
+            <Tag className="h-4 w-4 text-muted-foreground" />
+            <Select onValueChange={(value) => setSearchData({...searchData, brand: value})}>
+              <SelectTrigger className="h-12">
+                <SelectValue placeholder="Marca" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="chevrolet">Chevrolet</SelectItem>
+                <SelectItem value="volkswagen">Volkswagen</SelectItem>
+                <SelectItem value="toyota">Toyota</SelectItem>
+                <SelectItem value="jeep">Jeep</SelectItem>
+                <SelectItem value="fiat">Fiat</SelectItem>
+                <SelectItem value="honda">Honda</SelectItem>
+              </SelectContent>
+            </Select>
+          </div>
+
+          {/* Filtro Câmbio */}
+          <div className="flex items-center gap-2 min-w-[130px]">
+            <Settings className="h-4 w-4 text-muted-foreground" />
+            <Select onValueChange={(value) => setSearchData({...searchData, transmission: value})}>
+              <SelectTrigger className="h-12">
+                <SelectValue placeholder="Câmbio" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="manual">Manual</SelectItem>
+                <SelectItem value="automatico">Automático</SelectItem>
+                <SelectItem value="cvt">CVT</SelectItem>
+              </SelectContent>
+            </Select>
+          </div>
+
+          {/* Botão Limpar Filtros */}
+          <Button 
+            variant="outline" 
+            onClick={clearFilters}
+            className="h-12 gap-2 px-4"
+          >
+            <RotateCcw className="h-4 w-4" />
+            Limpar filtros
+          </Button>
         </div>
-
-        <Card className="max-w-4xl mx-auto">
-          <CardContent className="p-6">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
-              {/* Local de Retirada */}
-              <div className="space-y-2">
-                <label className="text-sm font-medium flex items-center gap-2">
-                  <MapPin className="h-4 w-4 text-primary" />
-                  Local de Retirada
-                </label>
-                <Select onValueChange={(value) => setSearchData({...searchData, location: value})}>
-                  <SelectTrigger>
-                    <SelectValue placeholder="Selecione o local" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="sao-paulo">São Paulo - SP</SelectItem>
-                    <SelectItem value="rio-janeiro">Rio de Janeiro - RJ</SelectItem>
-                    <SelectItem value="belo-horizonte">Belo Horizonte - MG</SelectItem>
-                    <SelectItem value="brasilia">Brasília - DF</SelectItem>
-                    <SelectItem value="salvador">Salvador - BA</SelectItem>
-                  </SelectContent>
-                </Select>
-              </div>
-
-              {/* Data de Retirada */}
-              <div className="space-y-2">
-                <label className="text-sm font-medium flex items-center gap-2">
-                  <Calendar className="h-4 w-4 text-primary" />
-                  Data de Retirada
-                </label>
-                <Input 
-                  type="date" 
-                  value={searchData.pickupDate}
-                  onChange={(e) => setSearchData({...searchData, pickupDate: e.target.value})}
-                />
-              </div>
-
-              {/* Data de Devolução */}
-              <div className="space-y-2">
-                <label className="text-sm font-medium flex items-center gap-2">
-                  <Calendar className="h-4 w-4 text-primary" />
-                  Data de Devolução
-                </label>
-                <Input 
-                  type="date" 
-                  value={searchData.returnDate}
-                  onChange={(e) => setSearchData({...searchData, returnDate: e.target.value})}
-                />
-              </div>
-
-              {/* Número de Passageiros */}
-              <div className="space-y-2">
-                <label className="text-sm font-medium flex items-center gap-2">
-                  <Users className="h-4 w-4 text-primary" />
-                  Passageiros
-                </label>
-                <Select onValueChange={(value) => setSearchData({...searchData, passengers: value})}>
-                  <SelectTrigger>
-                    <SelectValue placeholder="Quantos?" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="1-2">1 a 2 pessoas</SelectItem>
-                    <SelectItem value="3-4">3 a 4 pessoas</SelectItem>
-                    <SelectItem value="5-7">5 a 7 pessoas</SelectItem>
-                    <SelectItem value="8+">8+ pessoas</SelectItem>
-                  </SelectContent>
-                </Select>
-              </div>
-            </div>
-
-            {/* Botão de Busca */}
-            <div className="flex justify-center">
-              <Button size="lg" onClick={handleSearch} className="w-full md:w-auto min-w-[200px]">
-                <Search className="h-5 w-5 mr-2" />
-                Buscar Veículos
-              </Button>
-            </div>
-          </CardContent>
-        </Card>
       </div>
     </section>
   );
