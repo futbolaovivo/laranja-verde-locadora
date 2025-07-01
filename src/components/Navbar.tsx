@@ -20,7 +20,7 @@ const Navbar = () => {
             <a href="/" className="text-foreground hover:text-primary transition-colors">
               Início
             </a>
-            <a href="#carros" className="text-foreground hover:text-primary transition-colors">
+            <a href="/#carros" className="text-foreground hover:text-primary transition-colors">
               Nossos Carros
             </a>
             <a href="/quem-somos" className="text-foreground hover:text-primary transition-colors">
@@ -53,7 +53,7 @@ const Navbar = () => {
               <a href="/" className="text-foreground hover:text-primary transition-colors">
                 Início
               </a>
-              <a href="#carros" className="text-foreground hover:text-primary transition-colors">
+              <a href="/#carros" className="text-foreground hover:text-primary transition-colors">
                 Nossos Carros
               </a>
               <a href="/quem-somos" className="text-foreground hover:text-primary transition-colors">
