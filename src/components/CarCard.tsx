@@ -64,16 +64,11 @@ const CarCard = ({ name, image, category, passengers, transmission, fuel, dailyP
         </div>
       </CardContent>
       
-      <CardFooter className="p-4 pt-0 flex items-center justify-between">
-        <div>
-          <span className="text-2xl font-bold text-primary">
-            R$ {dailyPrice}
-          </span>
-          <span className="text-sm text-muted-foreground">/dia</span>
-        </div>
+      <CardFooter className="p-4 pt-0 flex justify-center">
         <Button 
           variant={status === 'available' ? 'default' : 'secondary'}
           disabled={status === 'rented'}
+          className="w-full"
         >
           {status === 'available' ? 'Reservar' : 'Indisponível'}
         </Button>
