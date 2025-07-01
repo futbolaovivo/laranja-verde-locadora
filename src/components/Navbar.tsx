@@ -35,7 +35,9 @@ const Navbar = () => {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <div className="flex items-center">
-            <img src="/lovable-uploads/377a4e9d-1a5b-4b35-b114-6e80af608e36.png" alt="MOVI Locadora" className="h-10" />
+            <a href="/" className="hover:opacity-80 transition-opacity">
+              <img src="/lovable-uploads/377a4e9d-1a5b-4b35-b114-6e80af608e36.png" alt="MOVI Locadora" className="h-10" />
+            </a>
           </div>
 
           {/* Desktop Navigation */}
