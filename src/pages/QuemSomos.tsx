@@ -12,11 +12,11 @@ const QuemSomos = () => {
         {/* Qualidade Garantida Section */}
         <div className="grid md:grid-cols-2 gap-12 items-center mb-16">
           <div>
-            <div className="w-48 h-48 mx-auto mb-8 flex items-center justify-center">
+            <div className="w-full max-w-md mx-auto mb-8 flex items-center justify-center">
               <img 
                 src="/lovable-uploads/42100d53-07cf-4556-a1df-362f273f5056.png" 
                 alt="Qualidade Garantida" 
-                className="w-full h-full object-contain"
+                className="w-full h-auto object-contain"
               />
             </div>
           </div>
