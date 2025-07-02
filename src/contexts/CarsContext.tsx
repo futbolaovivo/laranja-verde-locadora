@@ -34,28 +34,23 @@ interface CarsProviderProps {
 }
 
 export const CarsProvider = ({ children }: CarsProviderProps) => {
-  const [cars, setCars] = useState<Car[]>([
-    {
-      id: "cronos-001",
-      name: "CRONOS DRIVE 1.3 AUT",
-      image: "/lovable-uploads/132662ce-d8a3-401d-b356-e657d617f7ed.png",
-      category: "Econômico",
-      passengers: 5,
-      transmission: "Automático",
-      fuel: "Flex",
-      dailyPrice: 150,
-      status: "rented" as const
-    }
-  ]);
-
-  useEffect(() => {
-    // Limpa localStorage antigo e força o carro padrão
+  const [cars, setCars] = useState<Car[]>(() => {
+    // Limpa localStorage na inicialização para evitar duplicação
     localStorage.removeItem('cars');
-  }, []);
-
-  useEffect(() => {
-    localStorage.setItem('cars', JSON.stringify(cars));
-  }, [cars]);
+    return [
+      {
+        id: "cronos-001",
+        name: "CRONOS DRIVE 1.3 AUT",
+        image: "/lovable-uploads/132662ce-d8a3-401d-b356-e657d617f7ed.png",
+        category: "Econômico",
+        passengers: 5,
+        transmission: "Automático",
+        fuel: "Flex",
+        dailyPrice: 150,
+        status: "rented" as const
+      }
+    ];
+  });
 
   const addCar = (car: Car) => {
     setCars(prev => [...prev, car]);
