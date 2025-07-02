@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, ReactNode } from "react";
+import { createContext, useContext, useState, useEffect, ReactNode } from "react";
 
 export interface Car {
   id: string;
@@ -34,7 +34,14 @@ interface CarsProviderProps {
 }
 
 export const CarsProvider = ({ children }: CarsProviderProps) => {
-  const [cars, setCars] = useState<Car[]>([]);
+  const [cars, setCars] = useState<Car[]>(() => {
+    const saved = localStorage.getItem('cars');
+    return saved ? JSON.parse(saved) : [];
+  });
+
+  useEffect(() => {
+    localStorage.setItem('cars', JSON.stringify(cars));
+  }, [cars]);
 
   const addCar = (car: Car) => {
     setCars(prev => [...prev, car]);
