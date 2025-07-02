@@ -4,6 +4,7 @@ import { useCars } from "@/contexts/CarsContext";
 
 const CarsSection = () => {
   const { cars } = useCars();
+  console.log("Cars in CarsSection:", cars);
 
   return (
     <section id="carros" className="py-16 bg-background">
