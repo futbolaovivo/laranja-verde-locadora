@@ -36,7 +36,23 @@ interface CarsProviderProps {
 export const CarsProvider = ({ children }: CarsProviderProps) => {
   const [cars, setCars] = useState<Car[]>(() => {
     const savedCars = localStorage.getItem('cars');
-    return savedCars ? JSON.parse(savedCars) : [];
+    if (savedCars) {
+      return JSON.parse(savedCars);
+    }
+    // Carro inicial se não há carros salvos
+    return [
+      {
+        id: "cronos-001",
+        name: "CRONOS DRIVE 1.3 AUT",
+        image: "/lovable-uploads/132662ce-d8a3-401d-b356-e657d617f7ed.png",
+        category: "Econômico",
+        passengers: 5,
+        transmission: "Automático",
+        fuel: "Flex",
+        dailyPrice: 150,
+        status: "rented" as const
+      }
+    ];
   });
 
   useEffect(() => {
