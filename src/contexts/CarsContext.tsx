@@ -40,6 +40,7 @@ export const CarsProvider = ({ children }: CarsProviderProps) => {
   });
 
   useEffect(() => {
+    console.log('Salvando carros no localStorage:', cars);
     localStorage.setItem('cars', JSON.stringify(cars));
   }, [cars]);
 
