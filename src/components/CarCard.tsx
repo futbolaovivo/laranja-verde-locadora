@@ -68,7 +68,7 @@ const CarCard = ({ name, image, category, passengers, transmission, fuel, dailyP
         <Button 
           variant={status === 'available' ? 'default' : 'destructive'}
           disabled={status === 'rented'}
-          className={`w-full ${status === 'available' ? 'bg-green-600 hover:bg-green-700' : 'bg-red-600 hover:bg-red-700'}`}
+          className="w-full"
         >
           {status === 'available' ? 'Reservar' : 'Indisponível'}
         </Button>
