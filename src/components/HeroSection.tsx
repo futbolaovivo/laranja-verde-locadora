@@ -2,9 +2,10 @@ import { Button } from "@/components/ui/button";
 import { Check } from "lucide-react";
 import heroImage from "@/assets/virtus-landscape.jpg";
 const HeroSection = () => {
-  return <section className="relative min-h-screen flex items-center justify-center bg-cover bg-center bg-no-repeat" style={{
-    backgroundImage: `url(${heroImage})`
-  }}>
+  return (
+    <section className="relative min-h-screen flex items-center justify-center bg-cover bg-center bg-no-repeat" style={{
+      backgroundImage: `url(${heroImage})`
+    }}>
       {/* Overlay */}
       <div className="absolute inset-0 bg-black/40"></div>
       
@@ -43,14 +44,16 @@ const HeroSection = () => {
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4">
             <Button size="lg" className="bg-secondary hover:bg-secondary/90 text-white" asChild>
-              <a href="/veiculos">Ver Categorias</a>
+              <a href="/empresa#carros">Ver Frota</a>
             </Button>
             <Button size="lg" variant="outline" className="border-white hover:bg-white text-zinc-950" asChild>
-              <a href="/contato">Solicitar Contato</a>
+              <a href="/empresa#contato">Solicitar Contato</a>
             </Button>
           </div>
         </div>
       </div>
-    </section>;
+    </section>
+  );
 };
+
 export default HeroSection;
