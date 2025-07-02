@@ -22,7 +22,7 @@ const CarCard = ({ name, image, category, passengers, transmission, fuel, dailyP
         <img 
           src={image} 
           alt={name}
-          className="w-full h-48 object-cover"
+          className="w-full h-48 object-contain bg-gray-50"
         />
         <Badge 
           className={`absolute top-3 right-3 ${
