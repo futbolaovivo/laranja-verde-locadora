@@ -36,8 +36,48 @@ interface CarsProviderProps {
 export const CarsProvider = ({ children }: CarsProviderProps) => {
   const [cars, setCars] = useState<Car[]>(() => {
     const saved = localStorage.getItem('cars');
-    return saved ? JSON.parse(saved) : [];
+    if (saved) {
+      const parsedCars = JSON.parse(saved);
+      return parsedCars.length > 0 ? parsedCars : getDefaultCars();
+    }
+    return getDefaultCars();
   });
+
+  const getDefaultCars = (): Car[] => [
+    {
+      id: "default-1",
+      name: "Chevrolet Onix",
+      image: "https://images.unsplash.com/photo-1549399290-8121fd9f9c80?w=400&h=300&fit=crop",
+      category: "Econômico",
+      passengers: 5,
+      transmission: "Manual",
+      fuel: "Flex",
+      dailyPrice: 89,
+      status: 'available'
+    },
+    {
+      id: "default-2", 
+      name: "Volkswagen Polo",
+      image: "https://images.unsplash.com/photo-1555215695-3004980ad54e?w=400&h=300&fit=crop",
+      category: "Compacto",
+      passengers: 5,
+      transmission: "Automático",
+      fuel: "Flex",
+      dailyPrice: 120,
+      status: 'available'
+    },
+    {
+      id: "default-3",
+      name: "Toyota Corolla",
+      image: "https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?w=400&h=300&fit=crop",
+      category: "Intermediário", 
+      passengers: 5,
+      transmission: "Automático",
+      fuel: "Flex",
+      dailyPrice: 150,
+      status: 'available'
+    }
+  ];
 
   useEffect(() => {
     localStorage.setItem('cars', JSON.stringify(cars));
