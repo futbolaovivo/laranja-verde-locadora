@@ -45,14 +45,11 @@ const Navbar = () => {
             <a href="/" className="text-white hover:text-white/80 transition-colors">
               Início
             </a>
-            <a href="/quem-somos" className="text-white hover:text-white/80 transition-colors">
-              Quem Somos
-            </a>
-            <a href="/contato" className="text-white hover:text-white/80 transition-colors">
-              Contato
+            <a href="/empresa" className="text-white hover:text-white/80 transition-colors">
+              Empresa
             </a>
             <Button variant="default" size="sm" className="bg-secondary hover:bg-secondary/90 text-white" asChild>
-              <a href="/contato">Solicitar Orçamento</a>
+              <a href="/empresa#contato">Solicitar Orçamento</a>
             </Button>
           </div>
 
@@ -76,14 +73,11 @@ const Navbar = () => {
               <a href="/" className="text-white hover:text-white/80 transition-colors">
                 Início
               </a>
-              <a href="/quem-somos" className="text-white hover:text-white/80 transition-colors">
-                Quem Somos
-              </a>
-              <a href="/contato" className="text-white hover:text-white/80 transition-colors">
-                Contato
+              <a href="/empresa" className="text-white hover:text-white/80 transition-colors">
+                Empresa
               </a>
               <Button variant="default" size="sm" className="bg-secondary hover:bg-secondary/90 text-white w-fit" asChild>
-                <a href="/contato">Solicitar Orçamento</a>
+                <a href="/empresa#contato">Solicitar Orçamento</a>
               </Button>
             </div>
           </div>
