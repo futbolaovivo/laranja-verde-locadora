@@ -2,7 +2,6 @@ import { Button } from "@/components/ui/button";
 import { Check } from "lucide-react";
 import heroImage from "@/assets/virtus-landscape.jpg";
 const HeroSection = () => {
-  console.log("HeroSection loading...");
   return (
     <section className="relative min-h-screen flex items-center justify-center bg-cover bg-center bg-no-repeat" style={{
       backgroundImage: `url(${heroImage})`

@@ -3,7 +3,6 @@ import HeroSection from "@/components/HeroSection";
 import CarsSection from "@/components/CarsSection";
 
 const Index = () => {
-  console.log("Index page loading...");
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
