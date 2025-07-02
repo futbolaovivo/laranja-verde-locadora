@@ -14,6 +14,7 @@ const AdminPanel = () => {
   const { cars, addCar, updateCar, deleteCar } = useCars();
 
   const [isAddingCar, setIsAddingCar] = useState(false);
+  const [editingCar, setEditingCar] = useState<string | null>(null);
   const [newCar, setNewCar] = useState({
     name: "",
     image: "",
@@ -66,6 +67,62 @@ const AdminPanel = () => {
     });
   };
 
+  const handleEditCar = (car: Car) => {
+    setEditingCar(car.id);
+    setNewCar({
+      name: car.name,
+      image: car.image,
+      category: car.category,
+      passengers: car.passengers.toString(),
+      transmission: car.transmission,
+      fuel: car.fuel,
+      dailyPrice: car.dailyPrice.toString(),
+      status: car.status
+    });
+    setIsAddingCar(true);
+  };
+
+  const handleUpdateCar = () => {
+    if (!newCar.name || !newCar.category || !newCar.dailyPrice || !editingCar) {
+      toast({
+        title: "Erro",
+        description: "Preencha todos os campos obrigatórios",
+        variant: "destructive"
+      });
+      return;
+    }
+
+    const updatedCar: Partial<Car> = {
+      name: newCar.name,
+      image: newCar.image || "https://images.unsplash.com/photo-1549399290-8121fd9f9c80?w=400&h=300&fit=crop",
+      category: newCar.category,
+      passengers: parseInt(newCar.passengers) || 5,
+      transmission: newCar.transmission,
+      fuel: newCar.fuel,
+      dailyPrice: parseFloat(newCar.dailyPrice),
+      status: newCar.status
+    };
+
+    updateCar(editingCar, updatedCar);
+    setNewCar({
+      name: "",
+      image: "",
+      category: "",
+      passengers: "",
+      transmission: "",
+      fuel: "",
+      dailyPrice: "",
+      status: 'available'
+    });
+    setEditingCar(null);
+    setIsAddingCar(false);
+
+    toast({
+      title: "Sucesso",
+      description: "Carro atualizado com sucesso!",
+    });
+  };
+
   const handleStatusChange = (carId: string, newStatus: 'available' | 'rented') => {
     updateCar(carId, { status: newStatus });
     toast({
@@ -97,7 +154,7 @@ const AdminPanel = () => {
         {isAddingCar && (
           <Card className="mb-8">
             <CardHeader>
-              <CardTitle>Adicionar Novo Carro</CardTitle>
+              <CardTitle>{editingCar ? 'Editar Carro' : 'Adicionar Novo Carro'}</CardTitle>
             </CardHeader>
             <CardContent>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -195,8 +252,23 @@ const AdminPanel = () => {
                 </div>
               </div>
               <div className="flex gap-3 mt-6">
-                <Button onClick={handleAddCar}>Adicionar Carro</Button>
-                <Button variant="outline" onClick={() => setIsAddingCar(false)}>
+                <Button onClick={editingCar ? handleUpdateCar : handleAddCar}>
+                  {editingCar ? 'Atualizar Carro' : 'Adicionar Carro'}
+                </Button>
+                <Button variant="outline" onClick={() => {
+                  setIsAddingCar(false);
+                  setEditingCar(null);
+                  setNewCar({
+                    name: "",
+                    image: "",
+                    category: "",
+                    passengers: "",
+                    transmission: "",
+                    fuel: "",
+                    dailyPrice: "",
+                    status: 'available'
+                  });
+                }}>
                   Cancelar
                 </Button>
               </div>
@@ -247,7 +319,7 @@ const AdminPanel = () => {
                       </SelectContent>
                     </Select>
                     
-                    <Button variant="outline" size="sm">
+                    <Button variant="outline" size="sm" onClick={() => handleEditCar(car)}>
                       <Edit className="h-4 w-4" />
                     </Button>
                     
