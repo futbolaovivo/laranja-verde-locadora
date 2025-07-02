@@ -27,10 +27,10 @@ const CarsSection = () => {
         ) : (
           <div className="text-center py-12">
             <p className="text-muted-foreground mb-4">
-              Nenhum veículo cadastrado ainda.
+              Nossa frota está sendo atualizada.
             </p>
             <p className="text-sm text-muted-foreground">
-              Acesse o painel administrativo para adicionar veículos à frota.
+              Entre em contato para mais informações sobre disponibilidade.
             </p>
           </div>
         )}
