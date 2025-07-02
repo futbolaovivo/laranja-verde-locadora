@@ -7,34 +7,11 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Badge } from "@/components/ui/badge";
 import { Plus, Edit, Trash2 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
-
-interface Car {
-  id: string;
-  name: string;
-  image: string;
-  category: string;
-  passengers: number;
-  transmission: string;
-  fuel: string;
-  dailyPrice: number;
-  status: 'available' | 'rented';
-}
+import { useCars, Car } from "@/contexts/CarsContext";
 
 const AdminPanel = () => {
   const { toast } = useToast();
-  const [cars, setCars] = useState<Car[]>([
-    {
-      id: "1",
-      name: "Chevrolet Onix",
-      image: "https://images.unsplash.com/photo-1549399290-8121fd9f9c80?w=400&h=300&fit=crop",
-      category: "Econômico",
-      passengers: 5,
-      transmission: "Manual",
-      fuel: "Flex",
-      dailyPrice: 89,
-      status: 'available'
-    }
-  ]);
+  const { cars, addCar, updateCar, deleteCar } = useCars();
 
   const [isAddingCar, setIsAddingCar] = useState(false);
   const [newCar, setNewCar] = useState({
@@ -70,7 +47,7 @@ const AdminPanel = () => {
       status: newCar.status
     };
 
-    setCars([...cars, car]);
+    addCar(car);
     setNewCar({
       name: "",
       image: "",
@@ -85,15 +62,12 @@ const AdminPanel = () => {
 
     toast({
       title: "Sucesso",
-      description: "Carro adicionado com sucesso!",
+      description: "Carro adicionado com sucesso! Acesse a página de veículos para ver na frota.",
     });
   };
 
   const handleStatusChange = (carId: string, newStatus: 'available' | 'rented') => {
-    setCars(cars.map(car => 
-      car.id === carId ? { ...car, status: newStatus } : car
-    ));
-
+    updateCar(carId, { status: newStatus });
     toast({
       title: "Status atualizado",
       description: `Carro marcado como ${newStatus === 'available' ? 'disponível' : 'alugado'}`,
@@ -101,7 +75,7 @@ const AdminPanel = () => {
   };
 
   const handleDeleteCar = (carId: string) => {
-    setCars(cars.filter(car => car.id !== carId));
+    deleteCar(carId);
     toast({
       title: "Carro removido",
       description: "Carro removido da frota",
