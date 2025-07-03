@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
-import { Clock, Users, TrendingUp, Award, Mail, Phone, MapPin, MessageCircle } from "lucide-react";
+import { Clock, Users, TrendingUp, Award, Mail, Phone, MapPin, MessageCircle, Shield, Zap, Star, CheckCircle } from "lucide-react";
 import { useState } from "react";
 
 const Veiculos = () => {
@@ -34,316 +34,452 @@ const Veiculos = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-gradient-to-br from-background via-muted/30 to-background">
       <Navbar />
       
-      {/* Seção de Busca */}
-      <SearchForm />
+      {/* Hero Section with Search */}
+      <section className="relative py-20 bg-gradient-to-br from-primary via-primary/90 to-secondary overflow-hidden">
+        <div className="absolute inset-0 bg-black/20"></div>
+        <div className="relative container mx-auto px-4 text-center">
+          <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 animate-fade-in">
+            NOSSA <span className="text-secondary">FROTA</span>
+          </h1>
+          <p className="text-xl text-white/90 mb-8 max-w-3xl mx-auto">
+            Veículos de última geração com tecnologia avançada e segurança garantida para sua tranquilidade
+          </p>
+        </div>
+        
+        {/* Search Form Integrated */}
+        <div className="relative container mx-auto px-4 mt-12">
+          <SearchForm />
+        </div>
+      </section>
       
-      {/* Seção de Veículos */}
-      <CarsSection />
-      
-      {/* Seção de Filtros */}
-      <VehicleFilters />
-      
-      {/* Seção Quem Somos */}
-      <section id="quem-somos" className="py-16 bg-muted/30">
+      {/* Stats Section */}
+      <section className="py-16 bg-card border-y">
         <div className="container mx-auto px-4">
-          <h1 className="text-4xl font-bold text-foreground mb-12 text-center">Quem Somos</h1>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+            <div className="space-y-2">
+              <div className="text-3xl font-bold text-primary">500+</div>
+              <div className="text-muted-foreground">Clientes Satisfeitos</div>
+            </div>
+            <div className="space-y-2">
+              <div className="text-3xl font-bold text-primary">50+</div>
+              <div className="text-muted-foreground">Veículos na Frota</div>
+            </div>
+            <div className="space-y-2">
+              <div className="text-3xl font-bold text-primary">24/7</div>
+              <div className="text-muted-foreground">Suporte Disponível</div>
+            </div>
+            <div className="space-y-2">
+              <div className="text-3xl font-bold text-primary">100%</div>
+              <div className="text-muted-foreground">Segurança Garantida</div>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      {/* Cars Section with Modern Design */}
+      <section className="py-20 bg-gradient-to-b from-background to-muted/20">
+        <CarsSection />
+      </section>
+      
+      {/* Filters Section */}
+      <section className="py-16 bg-muted/50">
+        <VehicleFilters />
+      </section>
+      
+      {/* Company Section with Modern Design */}
+      <section id="quem-somos" className="py-20 bg-gradient-to-br from-card via-background to-muted/30">
+        <div className="container mx-auto px-4">
+          {/* Hero Section */}
+          <div className="text-center mb-20">
+            <h1 className="text-5xl md:text-6xl font-bold text-foreground mb-6">
+              QUEM <span className="text-primary">SOMOS</span>
+            </h1>
+            <p className="text-xl text-muted-foreground max-w-4xl mx-auto">
+              Líder em locação de veículos com mais de uma década de experiência
+            </p>
+          </div>
           
-          {/* Qualidade Garantida Section */}
-          <div className="grid md:grid-cols-2 gap-12 items-center mb-16">
-            <div>
-              <div className="w-full max-w-md mx-auto mb-8 flex items-center justify-center">
+          {/* Trust Indicators */}
+          <div className="grid md:grid-cols-3 gap-8 mb-20">
+            <div className="text-center p-8 bg-card rounded-2xl border shadow-lg hover:shadow-xl transition-all">
+              <Shield className="w-16 h-16 text-primary mx-auto mb-4" />
+              <h3 className="text-2xl font-bold mb-4">Segurança Total</h3>
+              <p className="text-muted-foreground">Todos os veículos com seguro completo e assistência 24h</p>
+            </div>
+            <div className="text-center p-8 bg-card rounded-2xl border shadow-lg hover:shadow-xl transition-all">
+              <Zap className="w-16 h-16 text-primary mx-auto mb-4" />
+              <h3 className="text-2xl font-bold mb-4">Agilidade</h3>
+              <p className="text-muted-foreground">Processo rápido de locação em menos de 30 minutos</p>
+            </div>
+            <div className="text-center p-8 bg-card rounded-2xl border shadow-lg hover:shadow-xl transition-all">
+              <Star className="w-16 h-16 text-primary mx-auto mb-4" />
+              <h3 className="text-2xl font-bold mb-4">Excelência</h3>
+              <p className="text-muted-foreground">Nota 5 estrelas na avaliação dos nossos clientes</p>
+            </div>
+          </div>
+          
+          {/* Company Info with Modern Layout */}
+          <div className="grid lg:grid-cols-2 gap-16 items-center mb-20">
+            <div className="relative">
+              <div className="absolute -inset-4 bg-gradient-to-r from-primary/20 to-secondary/20 rounded-3xl blur-xl"></div>
+              <div className="relative bg-card p-8 rounded-2xl border shadow-xl">
                 <img 
                   src="/lovable-uploads/42100d53-07cf-4556-a1df-362f273f5056.png" 
                   alt="Qualidade Garantida" 
-                  className="w-full h-auto object-contain"
+                  className="w-full h-auto object-contain rounded-xl"
                 />
               </div>
             </div>
             
-            <div>
-              <h2 className="text-3xl font-bold text-foreground mb-6">Um pouco de nossa Empresa...</h2>
-              <div className="space-y-4 text-muted-foreground">
-                <p>Além dos melhores produtos, trabalhamos de forma objetiva e eficiente, com integridade e senso de urgência para gerar os melhores serviços. Confira abaixo alguns dos pilares de nossa empresa.</p>
+            <div className="space-y-6">
+              <h2 className="text-4xl font-bold text-foreground mb-8">
+                <span className="text-primary">Excelência</span> em Cada Detalhe
+              </h2>
+              
+              <div className="space-y-6">
+                <div className="flex items-start space-x-4 p-4 bg-card rounded-xl border">
+                  <CheckCircle className="w-6 h-6 text-primary mt-1 flex-shrink-0" />
+                  <div>
+                    <h4 className="font-bold text-foreground mb-2">Foco Total no Cliente</h4>
+                    <p className="text-muted-foreground">Nossos clientes são nossa prioridade máxima. Atendemos suas necessidades com precisão e rapidez.</p>
+                  </div>
+                </div>
                 
-                <p><strong>Foco no Cliente:</strong> Nossos clientes são a razão da nossa existência. Nos comprometemos a atender suas demandas no local e prazo necessários.</p>
+                <div className="flex items-start space-x-4 p-4 bg-card rounded-xl border">
+                  <Shield className="w-6 h-6 text-primary mt-1 flex-shrink-0" />
+                  <div>
+                    <h4 className="font-bold text-foreground mb-2">Segurança Incomparável</h4>
+                    <p className="text-muted-foreground">Padrões rigorosos de segurança para proteger nossos clientes e colaboradores.</p>
+                  </div>
+                </div>
                 
-                <p><strong>Segurança:</strong> Somos rigorosos no cumprimento dos nossos padrões, prezando pela segurança dos nossos clientes e colaboradores.</p>
-                
-                <p><strong>Resultados com Qualidade:</strong> Buscamos maximizar os resultados, valorizando a qualidade em cada detalhe de nossa operação.</p>
-                
-                <p><strong>Trabalho em Equipe:</strong> Juntos alcançamos nossos objetivos, confiamos uns nos outros, compartilhando conquistas e resultados.</p>
+                <div className="flex items-start space-x-4 p-4 bg-card rounded-xl border">
+                  <Award className="w-6 h-6 text-primary mt-1 flex-shrink-0" />
+                  <div>
+                    <h4 className="font-bold text-foreground mb-2">Qualidade Premium</h4>
+                    <p className="text-muted-foreground">Maximizamos resultados valorizando cada detalhe de nossa operação.</p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
 
-          {/* Sucesso dos Clientes */}
-          <div className="grid md:grid-cols-2 gap-12 items-center mb-16">
-            <div>
-              <h2 className="text-3xl font-bold text-foreground mb-6">O sucesso de nossos clientes é o que nos motiva...</h2>
-              <div className="space-y-4 text-muted-foreground">
-                <p>Visamos construir relacionamentos de longo prazo, tendo como base a ética profissional. Estamos comprometidas com o sucesso de cada um de nossos clientes, pois acreditamos que o crescimento deles também será seu e de seus colaboradores.</p>
-                
-                <p>Quando nossos clientes ganham, nós também ganhamos. <strong>Fomos reconhecidos por nossas conquistas</strong> em categorias como diversidade, ética, excelência, inovação e integridade.</p>
+          {/* Success Story */}
+          <div className="grid lg:grid-cols-2 gap-16 items-center mb-20">
+            <div className="space-y-6">
+              <h2 className="text-4xl font-bold text-foreground">
+                Seu <span className="text-primary">Sucesso</span> nos Motiva
+              </h2>
+              <div className="space-y-4 text-lg text-muted-foreground">
+                <p>Construímos relacionamentos duradouros baseados na ética profissional e no compromisso com o sucesso de cada cliente.</p>
+                <p>Fomos <strong className="text-foreground">reconhecidos nacionalmente</strong> por nossa excelência em diversidade, ética, inovação e integridade.</p>
               </div>
             </div>
-            <div className="bg-muted rounded-lg p-8">
-              <img 
-                src="/lovable-uploads/0f6022ae-3fd3-4461-b84f-f888ecfd47b8.png" 
-                alt="Aperto de mãos entregando chaves do carro" 
-                className="w-full h-64 object-cover rounded-lg"
-              />
+            <div className="relative">
+              <div className="absolute -inset-4 bg-gradient-to-r from-secondary/20 to-primary/20 rounded-3xl blur-xl"></div>
+              <div className="relative bg-card p-8 rounded-2xl border shadow-xl">
+                <img 
+                  src="/lovable-uploads/0f6022ae-3fd3-4461-b84f-f888ecfd47b8.png" 
+                  alt="Aperto de mãos entregando chaves do carro" 
+                  className="w-full h-80 object-cover rounded-xl"
+                />
+              </div>
             </div>
           </div>
 
-          {/* Missão, Visão, Valores */}
-          <div className="mb-16">
-            <h2 className="text-3xl font-bold text-foreground mb-12 text-center">MISSÃO • VISÃO • VALORES</h2>
+          {/* Mission, Vision, Values - Modern Cards */}
+          <div className="mb-20">
+            <h2 className="text-4xl font-bold text-center text-foreground mb-16">
+              MISSÃO • VISÃO • <span className="text-primary">VALORES</span>
+            </h2>
             
             <div className="grid md:grid-cols-3 gap-8">
-              {/* Missão */}
-              <div className="bg-card p-6 rounded-lg border">
-                <h3 className="text-xl font-bold text-foreground mb-4 flex items-center">
-                  <Award className="w-6 h-6 text-primary mr-2" />
-                  Missão
-                </h3>
-                <p className="text-muted-foreground">
-                  Entregar soluções de qualidade na comercialização de prestação de nossos serviços. Proporcionar realização, satisfação no relacionamento com nossos clientes e colaboradores.
-                </p>
+              <div className="relative group">
+                <div className="absolute -inset-1 bg-gradient-to-r from-primary to-secondary rounded-2xl blur opacity-25 group-hover:opacity-50 transition duration-300"></div>
+                <div className="relative bg-card p-8 rounded-2xl border shadow-lg hover:shadow-xl transition-all">
+                  <div className="w-16 h-16 bg-gradient-to-br from-primary to-secondary rounded-xl flex items-center justify-center mb-6">
+                    <Award className="w-8 h-8 text-white" />
+                  </div>
+                  <h3 className="text-2xl font-bold text-foreground mb-4">Missão</h3>
+                  <p className="text-muted-foreground">
+                    Entregar soluções de qualidade premium na prestação de nossos serviços, proporcionando satisfação e realização completa aos nossos clientes e colaboradores.
+                  </p>
+                </div>
               </div>
 
-              {/* Visão */}
-              <div className="bg-card p-6 rounded-lg border">
-                <h3 className="text-xl font-bold text-foreground mb-4 flex items-center">
-                  <TrendingUp className="w-6 h-6 text-primary mr-2" />
-                  Visão
-                </h3>
-                <p className="text-muted-foreground">
-                  Nossa VISÃO é que trabalhamos duro, sermos competentes, nos esforçamos diariamente e honestamente para atender as mais diversas necessidades de nossos Clientes, todos os Fornecedores, Parceiros e Funcionários.
-                </p>
+              <div className="relative group">
+                <div className="absolute -inset-1 bg-gradient-to-r from-secondary to-primary rounded-2xl blur opacity-25 group-hover:opacity-50 transition duration-300"></div>
+                <div className="relative bg-card p-8 rounded-2xl border shadow-lg hover:shadow-xl transition-all">
+                  <div className="w-16 h-16 bg-gradient-to-br from-secondary to-primary rounded-xl flex items-center justify-center mb-6">
+                    <TrendingUp className="w-8 h-8 text-white" />
+                  </div>
+                  <h3 className="text-2xl font-bold text-foreground mb-4">Visão</h3>
+                  <p className="text-muted-foreground">
+                    Ser reconhecida como líder em locação de veículos, atendendo com excelência as necessidades de clientes, fornecedores, parceiros e funcionários.
+                  </p>
+                </div>
               </div>
 
-              {/* Valores */}
-              <div className="bg-card p-6 rounded-lg border">
-                <h3 className="text-xl font-bold text-foreground mb-4">Valores</h3>
-                <ul className="text-muted-foreground space-y-2 text-sm">
-                  <li>• <strong>Responsabilidade:</strong> Ser responsável por suas ações e decisões</li>
-                  <li>• <strong>Inovação:</strong> Buscar novas soluções, ideias e melhorias</li>
-                  <li>• <strong>Competência:</strong> Executar suas atividades com qualidade</li>
-                  <li>• <strong>Comprometimento:</strong> Estar comprometido com os princípios</li>
-                  <li>• <strong>Profissionalismo:</strong> Exercer suas atribuições com dedicação</li>
-                  <li>• <strong>Transparência:</strong> Atuar e informar de forma clara e verdadeira</li>
-                  <li>• <strong>Ética:</strong> Agir de acordo com valores que norteiam uma conduta íntegra</li>
-                </ul>
+              <div className="relative group">
+                <div className="absolute -inset-1 bg-gradient-to-r from-primary to-secondary rounded-2xl blur opacity-25 group-hover:opacity-50 transition duration-300"></div>
+                <div className="relative bg-card p-8 rounded-2xl border shadow-lg hover:shadow-xl transition-all">
+                  <div className="w-16 h-16 bg-gradient-to-br from-primary to-secondary rounded-xl flex items-center justify-center mb-6">
+                    <Star className="w-8 h-8 text-white" />
+                  </div>
+                  <h3 className="text-2xl font-bold text-foreground mb-4">Valores</h3>
+                  <div className="space-y-3 text-muted-foreground">
+                    <div className="flex items-center space-x-2">
+                      <CheckCircle className="w-4 h-4 text-primary" />
+                      <span className="font-semibold">Responsabilidade</span>
+                    </div>
+                    <div className="flex items-center space-x-2">
+                      <CheckCircle className="w-4 h-4 text-primary" />
+                      <span className="font-semibold">Inovação</span>
+                    </div>
+                    <div className="flex items-center space-x-2">
+                      <CheckCircle className="w-4 h-4 text-primary" />
+                      <span className="font-semibold">Competência</span>
+                    </div>
+                    <div className="flex items-center space-x-2">
+                      <CheckCircle className="w-4 h-4 text-primary" />
+                      <span className="font-semibold">Transparência</span>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
 
-          {/* Por que escolher nossa empresa */}
-          <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold text-foreground mb-6">POR QUE ESCOLHER A NOSSA EMPRESA?</h2>
-            <p className="text-muted-foreground mb-12">
-              Entregamos os resultados que você busca e porque consideramos que as nossas pessoas são o nosso maior patrimônio.
+          {/* Why Choose Us - Enhanced */}
+          <div className="text-center mb-20">
+            <h2 className="text-4xl font-bold text-foreground mb-6">
+              POR QUE ESCOLHER A <span className="text-primary">MOVI?</span>
+            </h2>
+            <p className="text-xl text-muted-foreground mb-16 max-w-4xl mx-auto">
+              Somos líderes do mercado porque entregamos resultados excepcionais e consideramos nossos colaboradores nosso maior patrimônio.
             </p>
             
-            <div className="grid md:grid-cols-4 gap-8">
-              <div className="text-center">
-                <div className="w-16 h-16 bg-primary rounded-lg flex items-center justify-center mx-auto mb-4">
-                  <Clock className="w-8 h-8 text-white" />
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+              <div className="group text-center p-6 bg-card rounded-2xl border shadow-lg hover:shadow-xl transition-all hover:-translate-y-2">
+                <div className="w-20 h-20 bg-gradient-to-br from-primary to-secondary rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
+                  <Clock className="w-10 h-10 text-white" />
                 </div>
-                <h3 className="font-bold text-foreground mb-2">Agilidade e eficiência</h3>
-                <p className="text-sm text-muted-foreground">no serviço realizado</p>
+                <h3 className="text-xl font-bold text-foreground mb-3">Agilidade Total</h3>
+                <p className="text-muted-foreground">Processo otimizado para máxima eficiência</p>
               </div>
               
-              <div className="text-center">
-                <div className="w-16 h-16 bg-primary rounded-lg flex items-center justify-center mx-auto mb-4">
-                  <Users className="w-8 h-8 text-white" />
+              <div className="group text-center p-6 bg-card rounded-2xl border shadow-lg hover:shadow-xl transition-all hover:-translate-y-2">
+                <div className="w-20 h-20 bg-gradient-to-br from-secondary to-primary rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
+                  <Users className="w-10 h-10 text-white" />
                 </div>
-                <h3 className="font-bold text-foreground mb-2">Equipe altamente</h3>
-                <p className="text-sm text-muted-foreground">qualificada no que faz</p>
+                <h3 className="text-xl font-bold text-foreground mb-3">Equipe Expert</h3>
+                <p className="text-muted-foreground">Profissionais altamente qualificados</p>
               </div>
               
-              <div className="text-center">
-                <div className="w-16 h-16 bg-primary rounded-lg flex items-center justify-center mx-auto mb-4">
-                  <TrendingUp className="w-8 h-8 text-white" />
+              <div className="group text-center p-6 bg-card rounded-2xl border shadow-lg hover:shadow-xl transition-all hover:-translate-y-2">
+                <div className="w-20 h-20 bg-gradient-to-br from-primary to-secondary rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
+                  <Zap className="w-10 h-10 text-white" />
                 </div>
-                <h3 className="font-bold text-foreground mb-2">Soluções de acordo</h3>
-                <p className="text-sm text-muted-foreground">com a sua necessidade</p>
+                <h3 className="text-xl font-bold text-foreground mb-3">Soluções Personalizadas</h3>
+                <p className="text-muted-foreground">Sob medida para suas necessidades</p>
               </div>
               
-              <div className="text-center">
-                <div className="w-16 h-16 bg-primary rounded-lg flex items-center justify-center mx-auto mb-4">
-                  <Award className="w-8 h-8 text-white" />
+              <div className="group text-center p-6 bg-card rounded-2xl border shadow-lg hover:shadow-xl transition-all hover:-translate-y-2">
+                <div className="w-20 h-20 bg-gradient-to-br from-secondary to-primary rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
+                  <Award className="w-10 h-10 text-white" />
                 </div>
-                <h3 className="font-bold text-foreground mb-2">Qualidade comprovada</h3>
-                <p className="text-sm text-muted-foreground">por nossos clientes</p>
+                <h3 className="text-xl font-bold text-foreground mb-3">Qualidade Comprovada</h3>
+                <p className="text-muted-foreground">Excelência reconhecida pelos clientes</p>
               </div>
             </div>
           </div>
         </div>
       </section>
       
-      {/* Seção Contato */}
-      <section id="contato" className="py-16 bg-background">
+      {/* Contact Section - Modern Design */}
+      <section id="contato" className="py-20 bg-gradient-to-br from-primary/5 via-background to-secondary/5">
         <div className="container mx-auto px-4">
-          <h1 className="text-4xl font-bold text-foreground mb-12 text-center">Contato</h1>
+          <div className="text-center mb-16">
+            <h1 className="text-5xl md:text-6xl font-bold text-foreground mb-6">
+              ENTRE EM <span className="text-primary">CONTATO</span>
+            </h1>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+              Pronto para acelerar? Nossa equipe está disponível para atender você com excelência
+            </p>
+          </div>
           
-          <div className="grid lg:grid-cols-2 gap-12">
-            {/* Informações de Contato */}
+          <div className="grid lg:grid-cols-2 gap-16">
+            {/* Contact Information */}
             <div className="space-y-8">
               {/* Email */}
-              <div className="flex items-start space-x-4">
-                <div className="w-12 h-12 bg-primary rounded-lg flex items-center justify-center flex-shrink-0">
-                  <Mail className="w-6 h-6 text-white" />
+              <div className="group flex items-start space-x-6 p-6 bg-card rounded-2xl border shadow-lg hover:shadow-xl transition-all">
+                <div className="w-16 h-16 bg-gradient-to-br from-primary to-secondary rounded-2xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
+                  <Mail className="w-8 h-8 text-white" />
                 </div>
                 <div>
-                  <h3 className="text-xl font-semibold text-foreground mb-2">Email</h3>
-                  <p className="text-muted-foreground">locadoramovi@gmail.com</p>
+                  <h3 className="text-2xl font-bold text-foreground mb-3">Email</h3>
+                  <p className="text-lg text-muted-foreground font-medium">locadoramovi@gmail.com</p>
                 </div>
               </div>
 
-              {/* Telefones */}
-              <div className="flex items-start space-x-4">
-                <div className="w-12 h-12 bg-primary rounded-lg flex items-center justify-center flex-shrink-0">
-                  <Phone className="w-6 h-6 text-white" />
+              {/* Phone */}
+              <div className="group flex items-start space-x-6 p-6 bg-card rounded-2xl border shadow-lg hover:shadow-xl transition-all">
+                <div className="w-16 h-16 bg-gradient-to-br from-secondary to-primary rounded-2xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
+                  <Phone className="w-8 h-8 text-white" />
                 </div>
                 <div>
-                  <h3 className="text-xl font-semibold text-foreground mb-2">Telefones</h3>
-                  <p className="text-muted-foreground">(65) 99285-1872</p>
+                  <h3 className="text-2xl font-bold text-foreground mb-3">WhatsApp & Telefone</h3>
+                  <p className="text-lg text-muted-foreground font-medium">(65) 99285-1872</p>
+                  <p className="text-sm text-muted-foreground">Resposta rápida garantida</p>
                 </div>
               </div>
 
-              {/* Horário de Funcionamento */}
-              <div className="flex items-start space-x-4">
-                <div className="w-12 h-12 bg-primary rounded-lg flex items-center justify-center flex-shrink-0">
-                  <Clock className="w-6 h-6 text-white" />
+              {/* Business Hours */}
+              <div className="group flex items-start space-x-6 p-6 bg-card rounded-2xl border shadow-lg hover:shadow-xl transition-all">
+                <div className="w-16 h-16 bg-gradient-to-br from-primary to-secondary rounded-2xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
+                  <Clock className="w-8 h-8 text-white" />
                 </div>
                 <div>
-                  <h3 className="text-xl font-semibold text-foreground mb-2">Horário de funcionamento</h3>
-                  <div className="text-muted-foreground space-y-1">
-                    <p>Segunda a sexta das 7:00 às 11:30</p>
-                    <p>das 13:00 às 18:00</p>
-                    <p>Sábado das 7:00 às 11:30</p>
+                  <h3 className="text-2xl font-bold text-foreground mb-3">Horário de Atendimento</h3>
+                  <div className="text-muted-foreground space-y-2">
+                    <p className="text-lg font-medium">Segunda a Sexta: 7:00 - 11:30 | 13:00 - 18:00</p>
+                    <p className="text-lg font-medium">Sábado: 7:00 - 11:30</p>
                   </div>
                 </div>
               </div>
 
-              {/* Endereço */}
-              <div className="flex items-start space-x-4">
-                <div className="w-12 h-12 bg-primary rounded-lg flex items-center justify-center flex-shrink-0">
-                  <MapPin className="w-6 h-6 text-white" />
+              {/* Address */}
+              <div className="group flex items-start space-x-6 p-6 bg-card rounded-2xl border shadow-lg hover:shadow-xl transition-all">
+                <div className="w-16 h-16 bg-gradient-to-br from-secondary to-primary rounded-2xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
+                  <MapPin className="w-8 h-8 text-white" />
                 </div>
                 <div>
-                  <h3 className="text-xl font-semibold text-foreground mb-2">Endereço</h3>
+                  <h3 className="text-2xl font-bold text-foreground mb-3">Localização</h3>
                   <div className="text-muted-foreground space-y-1">
-                    <p>Avenida Goiás 1374- S, Bairro Alvorada</p>
-                    <p>Lucas do Rio Verde MT</p>
-                    <p>Sala 02 anexo posto São Paulo</p>
+                    <p className="text-lg font-medium">Avenida Goiás 1374-S, Bairro Alvorada</p>
+                    <p className="text-lg font-medium">Lucas do Rio Verde - MT</p>
+                    <p className="text-base">Sala 02 anexo posto São Paulo</p>
                   </div>
                 </div>
               </div>
 
-              {/* Link para Mapa */}
+              {/* Map Link */}
               <div className="text-center pt-8">
-                <h3 className="text-2xl font-bold text-foreground mb-4">Gostaria de nos fazer uma visita?</h3>
-                <p className="text-muted-foreground">
-                  Clique aqui e confira nosso endereço e o mapa de como{" "}
+                <div className="bg-gradient-to-r from-primary to-secondary rounded-2xl p-8 text-white">
+                  <h3 className="text-3xl font-bold mb-4">Venha nos Visitar!</h3>
+                  <p className="text-lg mb-6">
+                    Clique no botão abaixo e confira nossa localização exata no mapa
+                  </p>
                   <a 
                     href="https://www.google.com.br/maps/place/Av.+Goi%C3%A1s,+1374+-+Alvorada,+Lucas+do+Rio+Verde+-+MT,+78455-000/@-13.081501,-55.9146912,16z/data=!3m1!4b1!4m6!3m5!1s0x93a0f3ecc15b976f:0xb45b6ae1594100e2!8m2!3d-13.081501!4d-55.9146912!16s%2Fg%2F11mcncjczd?entry=ttu&g_ep=EgoyMDI1MDYyNi4wIKXMDSoASAFQAw%3D%3D"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-primary hover:text-primary/80 font-semibold underline"
+                    className="inline-flex items-center px-8 py-4 bg-white text-primary font-bold rounded-xl hover:bg-white/90 transition-all transform hover:scale-105"
                   >
-                    chegar até a nós.
+                    <MapPin className="w-5 h-5 mr-2" />
+                    Ver no Google Maps
                   </a>
-                </p>
+                </div>
               </div>
             </div>
 
-            {/* Formulário de Contato */}
-            <div className="bg-card p-8 rounded-lg border">
-              <div className="flex items-center space-x-2 mb-6">
-                <MessageCircle className="w-6 h-6 text-primary" />
-                <h2 className="text-2xl font-bold text-foreground">Fale Conosco!</h2>
+            {/* Contact Form */}
+            <div className="relative">
+              <div className="absolute -inset-4 bg-gradient-to-r from-primary/20 to-secondary/20 rounded-3xl blur-xl"></div>
+              <div className="relative bg-card p-10 rounded-3xl border shadow-2xl">
+                <div className="flex items-center space-x-3 mb-8">
+                  <div className="w-12 h-12 bg-gradient-to-br from-primary to-secondary rounded-xl flex items-center justify-center">
+                    <MessageCircle className="w-6 h-6 text-white" />
+                  </div>
+                  <h2 className="text-3xl font-bold text-foreground">Solicite seu Orçamento!</h2>
+                </div>
+                
+                <p className="text-lg text-muted-foreground mb-8">
+                  Preencha o formulário e receba uma <strong className="text-foreground">resposta personalizada</strong> em até 30 minutos. Garantimos o melhor preço!
+                </p>
+
+                <form onSubmit={handleSubmit} className="space-y-6">
+                  <div>
+                    <Label htmlFor="nome" className="text-lg font-semibold">Nome Completo</Label>
+                    <Input
+                      id="nome"
+                      name="nome"
+                      type="text"
+                      value={formData.nome}
+                      onChange={handleInputChange}
+                      required
+                      className="mt-2 h-12 text-lg border-2 focus:border-primary"
+                      placeholder="Digite seu nome completo"
+                    />
+                  </div>
+
+                  <div>
+                    <Label htmlFor="telefone" className="text-lg font-semibold">WhatsApp</Label>
+                    <Input
+                      id="telefone"
+                      name="telefone"
+                      type="tel"
+                      value={formData.telefone}
+                      onChange={handleInputChange}
+                      required
+                      className="mt-2 h-12 text-lg border-2 focus:border-primary"
+                      placeholder="(65) 99999-9999"
+                    />
+                  </div>
+
+                  <div>
+                    <Label htmlFor="email" className="text-lg font-semibold">E-mail</Label>
+                    <Input
+                      id="email"
+                      name="email"
+                      type="email"
+                      value={formData.email}
+                      onChange={handleInputChange}
+                      required
+                      className="mt-2 h-12 text-lg border-2 focus:border-primary"
+                      placeholder="seu@email.com"
+                    />
+                  </div>
+
+                  <div>
+                    <Label htmlFor="endereco" className="text-lg font-semibold">Endereço Completo</Label>
+                    <Input
+                      id="endereco"
+                      name="endereco"
+                      type="text"
+                      value={formData.endereco}
+                      onChange={handleInputChange}
+                      required
+                      className="mt-2 h-12 text-lg border-2 focus:border-primary"
+                      placeholder="Cidade, Rua, Número"
+                    />
+                  </div>
+
+                  <div>
+                    <Label htmlFor="detalhes" className="text-lg font-semibold">Detalhes da Locação</Label>
+                    <Textarea
+                      id="detalhes"
+                      name="detalhes"
+                      value={formData.detalhes}
+                      onChange={handleInputChange}
+                      rows={4}
+                      className="mt-2 text-lg border-2 focus:border-primary resize-none"
+                      placeholder="Período desejado, tipo de veículo, destino da viagem..."
+                    />
+                  </div>
+
+                  <Button 
+                    type="submit" 
+                    className="w-full h-14 text-lg font-bold bg-gradient-to-r from-secondary to-primary hover:from-secondary/90 hover:to-primary/90 text-white rounded-xl transform hover:scale-105 transition-all shadow-lg"
+                  >
+                    <MessageCircle className="w-5 h-5 mr-2" />
+                    Solicitar Orçamento Agora!
+                  </Button>
+                </form>
               </div>
-              
-              <p className="text-muted-foreground mb-6">
-                Assim que recebermos seu contato, retornaremos o mais rápido possível. 
-                Preencha todas as informações do formulário para solicitar um orçamento com mais 
-                precisão. <strong>Obrigado(a)!</strong>
-              </p>
-
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div>
-                  <Label htmlFor="nome">Nome</Label>
-                  <Input
-                    id="nome"
-                    name="nome"
-                    type="text"
-                    value={formData.nome}
-                    onChange={handleInputChange}
-                    required
-                    className="mt-1"
-                  />
-                </div>
-
-                <div>
-                  <Label htmlFor="telefone">Telefone</Label>
-                  <Input
-                    id="telefone"
-                    name="telefone"
-                    type="tel"
-                    value={formData.telefone}
-                    onChange={handleInputChange}
-                    required
-                    className="mt-1"
-                  />
-                </div>
-
-                <div>
-                  <Label htmlFor="email">E-mail</Label>
-                  <Input
-                    id="email"
-                    name="email"
-                    type="email"
-                    value={formData.email}
-                    onChange={handleInputChange}
-                    required
-                    className="mt-1"
-                  />
-                </div>
-
-                <div>
-                  <Label htmlFor="endereco">Endereço Completo (Cidade, Rua, Número)</Label>
-                  <Input
-                    id="endereco"
-                    name="endereco"
-                    type="text"
-                    value={formData.endereco}
-                    onChange={handleInputChange}
-                    required
-                    className="mt-1"
-                  />
-                </div>
-
-                <div>
-                  <Label htmlFor="detalhes">Mais Detalhes</Label>
-                  <Textarea
-                    id="detalhes"
-                    name="detalhes"
-                    value={formData.detalhes}
-                    onChange={handleInputChange}
-                    rows={4}
-                    className="mt-1"
-                  />
-                </div>
-
-                <Button type="submit" className="w-full bg-secondary hover:bg-secondary/80">
-                  Solicitar orçamento
-                </Button>
-              </form>
             </div>
           </div>
         </div>
