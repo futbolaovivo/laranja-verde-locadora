@@ -47,7 +47,84 @@ export const CarsProvider = ({ children }: CarsProviderProps) => {
         transmission: "Automático",
         fuel: "Flex",
         dailyPrice: 150,
+        status: "available" as const
+      },
+      {
+        id: "onix-001",
+        name: "CHEVROLET ONIX 1.0 TURBO",
+        image: "/lovable-uploads/132662ce-d8a3-401d-b356-e657d617f7ed.png",
+        category: "Compacto",
+        passengers: 5,
+        transmission: "Manual",
+        fuel: "Flex",
+        dailyPrice: 120,
+        status: "available" as const
+      },
+      {
+        id: "virtus-001",
+        name: "VOLKSWAGEN VIRTUS 1.6 MSI",
+        image: "/src/assets/virtus-black.jpg",
+        category: "Intermediário",
+        passengers: 5,
+        transmission: "Manual",
+        fuel: "Flex",
+        dailyPrice: 180,
+        status: "available" as const
+      },
+      {
+        id: "compass-001",
+        name: "JEEP COMPASS 2.0 DIESEL",
+        image: "/lovable-uploads/75717a4b-8d0a-4734-8ec8-4d4b60c3660d.png",
+        category: "SUV",
+        passengers: 5,
+        transmission: "Automático",
+        fuel: "Diesel",
+        dailyPrice: 320,
+        status: "available" as const
+      },
+      {
+        id: "s10-001",
+        name: "CHEVROLET S10 2.8 DIESEL",
+        image: "/lovable-uploads/7f822c8b-80a4-4ec0-a34a-e3a33d7ade01.png",
+        category: "Pickup",
+        passengers: 5,
+        transmission: "Manual",
+        fuel: "Diesel",
+        dailyPrice: 280,
         status: "rented" as const
+      },
+      {
+        id: "tracker-001",
+        name: "CHEVROLET TRACKER 1.0 TURBO",
+        image: "/lovable-uploads/0f6022ae-3fd3-4461-b84f-f888ecfd47b8.png",
+        category: "SUV Compacto",
+        passengers: 5,
+        transmission: "Automático",
+        fuel: "Flex",
+        dailyPrice: 220,
+        status: "available" as const
+      },
+      {
+        id: "corolla-001",
+        name: "TOYOTA COROLLA 2.0 HYBRID",
+        image: "/lovable-uploads/42100d53-07cf-4556-a1df-362f273f5056.png",
+        category: "Intermediário",
+        passengers: 5,
+        transmission: "CVT",
+        fuel: "Híbrido",
+        dailyPrice: 250,
+        status: "available" as const
+      },
+      {
+        id: "hilux-001",
+        name: "TOYOTA HILUX 2.8 DIESEL 4X4",
+        image: "/lovable-uploads/377a4e9d-1a5b-4b35-b114-6e80af608e36.png",
+        category: "Pickup",
+        passengers: 5,
+        transmission: "Automático",
+        fuel: "Diesel",
+        dailyPrice: 380,
+        status: "available" as const
       }
     ];
   });
