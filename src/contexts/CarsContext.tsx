@@ -41,7 +41,7 @@ export const CarsProvider = ({ children }: CarsProviderProps) => {
       {
         id: "cronos-001",
         name: "CRONOS DRIVE 1.3 AUT",
-        image: "/lovable-uploads/132662ce-d8a3-401d-b356-e657d617f7ed.png",
+        image: "/lovable-uploads/077e6481-a56d-46f2-b645-29cebea4d71a.png",
         category: "Econômico",
         passengers: 5,
         transmission: "Automático",
