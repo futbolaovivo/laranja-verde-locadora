@@ -14,7 +14,19 @@ const AdminPanel = () => {
   const { cars, addCar, updateCar, deleteCar } = useCars();
 
   const [isAddingCar, setIsAddingCar] = useState(false);
+  const [isEditingCar, setIsEditingCar] = useState(false);
+  const [editingCarId, setEditingCarId] = useState<string | null>(null);
   const [newCar, setNewCar] = useState({
+    name: "",
+    image: "",
+    category: "",
+    passengers: "",
+    transmission: "",
+    fuel: "",
+    dailyPrice: "",
+    status: 'available' as 'available' | 'rented'
+  });
+  const [editCar, setEditCar] = useState({
     name: "",
     image: "",
     category: "",
@@ -72,6 +84,63 @@ const AdminPanel = () => {
       title: "Status atualizado",
       description: `Carro marcado como ${newStatus === 'available' ? 'disponível' : 'alugado'}`,
     });
+  };
+
+  const handleEditCar = (car: Car) => {
+    setEditCar({
+      name: car.name,
+      image: car.image,
+      category: car.category,
+      passengers: car.passengers.toString(),
+      transmission: car.transmission,
+      fuel: car.fuel,
+      dailyPrice: car.dailyPrice.toString(),
+      status: car.status
+    });
+    setEditingCarId(car.id);
+    setIsEditingCar(true);
+  };
+
+  const handleSaveEdit = () => {
+    if (!editCar.name || !editCar.category || !editCar.dailyPrice) {
+      toast({
+        title: "Erro",
+        description: "Preencha todos os campos obrigatórios",
+        variant: "destructive"
+      });
+      return;
+    }
+
+    if (editingCarId) {
+      updateCar(editingCarId, {
+        name: editCar.name,
+        image: editCar.image || "https://images.unsplash.com/photo-1549399290-8121fd9f9c80?w=400&h=300&fit=crop",
+        category: editCar.category,
+        passengers: parseInt(editCar.passengers) || 5,
+        transmission: editCar.transmission,
+        fuel: editCar.fuel,
+        dailyPrice: parseFloat(editCar.dailyPrice),
+        status: editCar.status
+      });
+
+      setIsEditingCar(false);
+      setEditingCarId(null);
+      setEditCar({
+        name: "",
+        image: "",
+        category: "",
+        passengers: "",
+        transmission: "",
+        fuel: "",
+        dailyPrice: "",
+        status: 'available'
+      });
+
+      toast({
+        title: "Sucesso",
+        description: "Carro atualizado com sucesso!",
+      });
+    }
   };
 
   const handleDeleteCar = (carId: string) => {
@@ -204,6 +273,117 @@ const AdminPanel = () => {
           </Card>
         )}
 
+        {/* Formulário de editar carro */}
+        {isEditingCar && (
+          <Card className="mb-8">
+            <CardHeader>
+              <CardTitle>Editar Carro</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                <div>
+                  <Label htmlFor="edit-name">Nome do Carro *</Label>
+                  <Input
+                    id="edit-name"
+                    value={editCar.name}
+                    onChange={(e) => setEditCar({...editCar, name: e.target.value})}
+                    placeholder="Ex: Chevrolet Onix"
+                  />
+                </div>
+                <div>
+                  <Label htmlFor="edit-category">Categoria *</Label>
+                  <Select value={editCar.category} onValueChange={(value) => setEditCar({...editCar, category: value})}>
+                    <SelectTrigger>
+                      <SelectValue placeholder="Selecione a categoria" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="Econômico">Econômico</SelectItem>
+                      <SelectItem value="Compacto">Compacto</SelectItem>
+                      <SelectItem value="Intermediário">Intermediário</SelectItem>
+                      <SelectItem value="SUV">SUV</SelectItem>
+                      <SelectItem value="Pickup">Pickup</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+                <div>
+                  <Label htmlFor="edit-passengers">Passageiros</Label>
+                  <Input
+                    id="edit-passengers"
+                    type="number"
+                    value={editCar.passengers}
+                    onChange={(e) => setEditCar({...editCar, passengers: e.target.value})}
+                    placeholder="5"
+                  />
+                </div>
+                <div>
+                  <Label htmlFor="edit-transmission">Transmissão</Label>
+                  <Select value={editCar.transmission} onValueChange={(value) => setEditCar({...editCar, transmission: value})}>
+                    <SelectTrigger>
+                      <SelectValue placeholder="Transmissão" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="Manual">Manual</SelectItem>
+                      <SelectItem value="Automático">Automático</SelectItem>
+                      <SelectItem value="CVT">CVT</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+                <div>
+                  <Label htmlFor="edit-fuel">Combustível</Label>
+                  <Select value={editCar.fuel} onValueChange={(value) => setEditCar({...editCar, fuel: value})}>
+                    <SelectTrigger>
+                      <SelectValue placeholder="Combustível" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="Flex">Flex</SelectItem>
+                      <SelectItem value="Gasolina">Gasolina</SelectItem>
+                      <SelectItem value="Diesel">Diesel</SelectItem>
+                      <SelectItem value="Híbrido">Híbrido</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+                <div>
+                  <Label htmlFor="edit-dailyPrice">Preço Diário *</Label>
+                  <Input
+                    id="edit-dailyPrice"
+                    type="number"
+                    value={editCar.dailyPrice}
+                    onChange={(e) => setEditCar({...editCar, dailyPrice: e.target.value})}
+                    placeholder="89.00"
+                  />
+                </div>
+                <div>
+                  <Label htmlFor="edit-image">URL da Imagem</Label>
+                  <Input
+                    id="edit-image"
+                    value={editCar.image}
+                    onChange={(e) => setEditCar({...editCar, image: e.target.value})}
+                    placeholder="https://..."
+                  />
+                </div>
+                <div>
+                  <Label htmlFor="edit-status">Status</Label>
+                  <Select value={editCar.status} onValueChange={(value: 'available' | 'rented') => setEditCar({...editCar, status: value})}>
+                    <SelectTrigger>
+                      <SelectValue placeholder="Status" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="available">Disponível</SelectItem>
+                      <SelectItem value="rented">Alugado</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+              </div>
+              <div className="flex gap-3 mt-6">
+                <Button onClick={handleSaveEdit}>Salvar Alterações</Button>
+                <Button variant="outline" onClick={() => setIsEditingCar(false)}>
+                  Cancelar
+                </Button>
+              </div>
+            </CardContent>
+          </Card>
+        )}
+
         {/* Lista de carros */}
         <div className="grid gap-4">
           {cars.map((car) => (
@@ -247,7 +427,7 @@ const AdminPanel = () => {
                       </SelectContent>
                     </Select>
                     
-                    <Button variant="outline" size="sm">
+                    <Button variant="outline" size="sm" onClick={() => handleEditCar(car)}>
                       <Edit className="h-4 w-4" />
                     </Button>
                     
