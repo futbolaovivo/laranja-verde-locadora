@@ -48,11 +48,8 @@ const Navbar = () => {
             <a href="/veiculos" className="text-white hover:text-white/80 transition-colors">
               Veículos
             </a>
-            <a href="/empresa" className="text-white hover:text-white/80 transition-colors">
-              Empresa
-            </a>
             <Button variant="default" size="sm" className="bg-secondary hover:bg-secondary/90 text-white" asChild>
-              <a href="/empresa#contato">Solicitar Orçamento</a>
+              <a href="/veiculos#contato">Solicitar Orçamento</a>
             </Button>
           </div>
 
@@ -79,11 +76,8 @@ const Navbar = () => {
               <a href="/veiculos" className="text-white hover:text-white/80 transition-colors">
                 Veículos
               </a>
-              <a href="/empresa" className="text-white hover:text-white/80 transition-colors">
-                Empresa
-              </a>
               <Button variant="default" size="sm" className="bg-secondary hover:bg-secondary/90 text-white w-fit" asChild>
-                <a href="/empresa#contato">Solicitar Orçamento</a>
+                <a href="/veiculos#contato">Solicitar Orçamento</a>
               </Button>
             </div>
           </div>
