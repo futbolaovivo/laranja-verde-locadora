@@ -5,7 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Badge } from "@/components/ui/badge";
-import { Plus, Edit, Trash2 } from "lucide-react";
+import { Plus, Edit, Trash2, Upload, X } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { useCars, Car } from "@/contexts/CarsContext";
 
@@ -20,7 +20,7 @@ const AdminPanel = () => {
   const [editingCarId, setEditingCarId] = useState<string | null>(null);
   const [newCar, setNewCar] = useState({
     name: "",
-    image: "",
+    images: [] as string[],
     category: "",
     passengers: "",
     transmission: "",
@@ -30,7 +30,7 @@ const AdminPanel = () => {
   });
   const [editCar, setEditCar] = useState({
     name: "",
-    image: "",
+    images: [] as string[],
     category: "",
     passengers: "",
     transmission: "",
@@ -39,18 +39,44 @@ const AdminPanel = () => {
     status: 'available' as 'available' | 'rented'
   });
 
-  const handleImageUpload = (file: File, isEditing: boolean = false) => {
-    if (file) {
+  const handleImageUpload = (files: FileList, isEditing: boolean = false) => {
+    const maxImages = 6;
+    const currentImages = isEditing ? editCar.images : newCar.images;
+    
+    if (currentImages.length + files.length > maxImages) {
+      toast({
+        title: "Limite excedido",
+        description: `Máximo de ${maxImages} imagens permitidas`,
+        variant: "destructive"
+      });
+      return;
+    }
+
+    Array.from(files).forEach((file) => {
       const reader = new FileReader();
       reader.onload = (e) => {
         const imageUrl = e.target?.result as string;
         if (isEditing) {
-          setEditCar({...editCar, image: imageUrl});
+          setEditCar(prev => ({...prev, images: [...prev.images, imageUrl]}));
         } else {
-          setNewCar({...newCar, image: imageUrl});
+          setNewCar(prev => ({...prev, images: [...prev.images, imageUrl]}));
         }
       };
       reader.readAsDataURL(file);
+    });
+  };
+
+  const removeImage = (index: number, isEditing: boolean = false) => {
+    if (isEditing) {
+      setEditCar(prev => ({
+        ...prev, 
+        images: prev.images.filter((_, i) => i !== index)
+      }));
+    } else {
+      setNewCar(prev => ({
+        ...prev, 
+        images: prev.images.filter((_, i) => i !== index)
+      }));
     }
   };
 
@@ -67,7 +93,7 @@ const AdminPanel = () => {
     const car: Car = {
       id: Date.now().toString(),
       name: newCar.name,
-      image: newCar.image || "https://images.unsplash.com/photo-1549399290-8121fd9f9c80?w=400&h=300&fit=crop",
+      images: newCar.images.length > 0 ? newCar.images : ["https://images.unsplash.com/photo-1549399290-8121fd9f9c80?w=400&h=300&fit=crop"],
       category: newCar.category,
       passengers: parseInt(newCar.passengers) || 5,
       transmission: newCar.transmission,
@@ -79,7 +105,7 @@ const AdminPanel = () => {
     addCar(car);
     setNewCar({
       name: "",
-      image: "",
+      images: [],
       category: "",
       passengers: "",
       transmission: "",
@@ -106,7 +132,7 @@ const AdminPanel = () => {
   const handleEditCar = (car: Car) => {
     setEditCar({
       name: car.name,
-      image: car.image,
+      images: [...car.images],
       category: car.category,
       passengers: car.passengers.toString(),
       transmission: car.transmission,
@@ -131,7 +157,7 @@ const AdminPanel = () => {
     if (editingCarId) {
       updateCar(editingCarId, {
         name: editCar.name,
-        image: editCar.image || "https://images.unsplash.com/photo-1549399290-8121fd9f9c80?w=400&h=300&fit=crop",
+        images: editCar.images.length > 0 ? editCar.images : ["https://images.unsplash.com/photo-1549399290-8121fd9f9c80?w=400&h=300&fit=crop"],
         category: editCar.category,
         passengers: parseInt(editCar.passengers) || 5,
         transmission: editCar.transmission,
@@ -144,7 +170,7 @@ const AdminPanel = () => {
       setEditingCarId(null);
       setEditCar({
         name: "",
-        image: "",
+        images: [],
         category: "",
         passengers: "",
         transmission: "",
@@ -258,22 +284,41 @@ const AdminPanel = () => {
                     placeholder="89.00"
                   />
                 </div>
-                <div>
-                  <Label htmlFor="image">Imagem da Capa</Label>
+                <div className="col-span-full">
+                  <Label>Imagens (máximo 6 - primeira será a capa)</Label>
                   <div className="space-y-2">
                     <Input
                       ref={fileInputRef}
                       type="file"
                       accept="image/*"
+                      multiple
                       onChange={(e) => {
-                        const file = e.target.files?.[0];
-                        if (file) handleImageUpload(file, false);
+                        const files = e.target.files;
+                        if (files) handleImageUpload(files, false);
                       }}
                       className="file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-primary file:text-white hover:file:bg-primary/90"
                     />
-                    {newCar.image && (
-                      <div className="mt-2">
-                        <img src={newCar.image} alt="Preview" className="w-20 h-20 object-cover rounded border" />
+                    {newCar.images.length > 0 && (
+                      <div className="grid grid-cols-6 gap-2 mt-2">
+                        {newCar.images.map((image, index) => (
+                          <div key={index} className="relative">
+                            <img src={image} alt={`Preview ${index + 1}`} className="w-full h-20 object-cover rounded border" />
+                            <Button
+                              type="button"
+                              variant="destructive"
+                              size="sm"
+                              className="absolute -top-2 -right-2 h-6 w-6 rounded-full p-0"
+                              onClick={() => removeImage(index, false)}
+                            >
+                              <X className="h-3 w-3" />
+                            </Button>
+                            {index === 0 && (
+                              <Badge className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 text-xs">
+                                Capa
+                              </Badge>
+                            )}
+                          </div>
+                        ))}
                       </div>
                     )}
                   </div>
@@ -380,22 +425,41 @@ const AdminPanel = () => {
                     placeholder="89.00"
                   />
                 </div>
-                <div>
-                  <Label htmlFor="edit-image">Imagem da Capa</Label>
+                <div className="col-span-full">
+                  <Label>Imagens (máximo 6 - primeira será a capa)</Label>
                   <div className="space-y-2">
                     <Input
                       ref={editFileInputRef}
                       type="file"
                       accept="image/*"
+                      multiple
                       onChange={(e) => {
-                        const file = e.target.files?.[0];
-                        if (file) handleImageUpload(file, true);
+                        const files = e.target.files;
+                        if (files) handleImageUpload(files, true);
                       }}
                       className="file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-primary file:text-white hover:file:bg-primary/90"
                     />
-                    {editCar.image && (
-                      <div className="mt-2">
-                        <img src={editCar.image} alt="Preview" className="w-20 h-20 object-cover rounded border" />
+                    {editCar.images.length > 0 && (
+                      <div className="grid grid-cols-6 gap-2 mt-2">
+                        {editCar.images.map((image, index) => (
+                          <div key={index} className="relative">
+                            <img src={image} alt={`Preview ${index + 1}`} className="w-full h-20 object-cover rounded border" />
+                            <Button
+                              type="button"
+                              variant="destructive"
+                              size="sm"
+                              className="absolute -top-2 -right-2 h-6 w-6 rounded-full p-0"
+                              onClick={() => removeImage(index, true)}
+                            >
+                              <X className="h-3 w-3" />
+                            </Button>
+                            {index === 0 && (
+                              <Badge className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 text-xs">
+                                Capa
+                              </Badge>
+                            )}
+                          </div>
+                        ))}
                       </div>
                     )}
                   </div>
@@ -431,7 +495,7 @@ const AdminPanel = () => {
                 <div className="flex items-center justify-between">
                   <div className="flex items-center space-x-4">
                     <img 
-                      src={car.image} 
+                      src={car.images[0] || "https://images.unsplash.com/photo-1549399290-8121fd9f9c80?w=400&h=300&fit=crop"} 
                       alt={car.name}
                       className="w-20 h-20 object-cover rounded"
                     />
@@ -439,6 +503,7 @@ const AdminPanel = () => {
                       <h3 className="text-lg font-semibold">{car.name}</h3>
                       <p className="text-sm text-muted-foreground">{car.category}</p>
                       <p className="text-lg font-bold text-primary">R$ {car.dailyPrice}/dia</p>
+                      <p className="text-xs text-muted-foreground">{car.images.length} imagem(ns)</p>
                     </div>
                   </div>
                   

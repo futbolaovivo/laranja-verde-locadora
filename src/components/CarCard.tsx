@@ -6,7 +6,7 @@ import { Users, Fuel, Settings, Shield } from "lucide-react";
 interface CarCardProps {
   id: string;
   name: string;
-  image: string;
+  images: string[];
   category: string;
   passengers: number;
   transmission: string;
@@ -15,12 +15,12 @@ interface CarCardProps {
   status: 'available' | 'rented';
 }
 
-const CarCard = ({ name, image, category, passengers, transmission, fuel, dailyPrice, status }: CarCardProps) => {
+const CarCard = ({ name, images, category, passengers, transmission, fuel, dailyPrice, status }: CarCardProps) => {
   return (
     <Card className="overflow-hidden hover:shadow-lg transition-shadow">
       <div className="relative">
         <img 
-          src={image} 
+          src={images[0] || "https://images.unsplash.com/photo-1549399290-8121fd9f9c80?w=400&h=300&fit=crop"} 
           alt={name}
           className="w-full h-48 object-contain bg-gray-50"
         />

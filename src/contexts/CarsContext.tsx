@@ -3,7 +3,7 @@ import { createContext, useContext, useState, useEffect, ReactNode } from "react
 export interface Car {
   id: string;
   name: string;
-  image: string;
+  images: string[]; // Array de imagens em vez de uma única imagem
   category: string;
   passengers: number;
   transmission: string;
@@ -46,7 +46,7 @@ export const CarsProvider = ({ children }: CarsProviderProps) => {
       {
         id: "cronos-001",
         name: "FIAT CRONOS DRIVE 1.3 AUT - VL",
-        image: "/lovable-uploads/077e6481-a56d-46f2-b645-29cebea4d71a.png",
+        images: ["/lovable-uploads/077e6481-a56d-46f2-b645-29cebea4d71a.png"],
         category: "Econômico",
         passengers: 5,
         transmission: "Automático",
@@ -57,7 +57,7 @@ export const CarsProvider = ({ children }: CarsProviderProps) => {
       {
         id: "onix-sedan-001",
         name: "CHEVROLET ONIX SEDAN PREMIER AT - VL",
-        image: "/lovable-uploads/132662ce-d8a3-401d-b356-e657d617f7ed.png",
+        images: ["/lovable-uploads/132662ce-d8a3-401d-b356-e657d617f7ed.png"],
         category: "Compacto",
         passengers: 5,
         transmission: "Automático",
@@ -68,7 +68,7 @@ export const CarsProvider = ({ children }: CarsProviderProps) => {
       {
         id: "strada-cd-001",
         name: "FIAT STRADA FREEDOM CD - VL",
-        image: "/lovable-uploads/7f822c8b-80a4-4ec0-a34a-e3a33d7ade01.png",
+        images: ["/lovable-uploads/7f822c8b-80a4-4ec0-a34a-e3a33d7ade01.png"],
         category: "Pickup",
         passengers: 5,
         transmission: "Manual",
@@ -79,7 +79,7 @@ export const CarsProvider = ({ children }: CarsProviderProps) => {
       {
         id: "montana-001",
         name: "CHEVROLET MONTANA LTZ 1.2 TURBO AUT",
-        image: "/lovable-uploads/75717a4b-8d0a-4734-8ec8-4d4b60c3660d.png",
+        images: ["/lovable-uploads/75717a4b-8d0a-4734-8ec8-4d4b60c3660d.png"],
         category: "Pickup",
         passengers: 5,
         transmission: "Automático",
@@ -90,7 +90,7 @@ export const CarsProvider = ({ children }: CarsProviderProps) => {
       {
         id: "virtus-001",
         name: "VOLKSWAGEN VIRTUS TSI AUT",
-        image: "/lovable-uploads/377a4e9d-1a5b-4b35-b114-6e80af608e36.png",
+        images: ["/lovable-uploads/377a4e9d-1a5b-4b35-b114-6e80af608e36.png"],
         category: "Intermediário",
         passengers: 5,
         transmission: "Automático",
@@ -101,7 +101,7 @@ export const CarsProvider = ({ children }: CarsProviderProps) => {
       {
         id: "argo-001",
         name: "FIAT ARGO DRIVE COM KIT",
-        image: "/lovable-uploads/0f6022ae-3fd3-4461-b84f-f888ecfd47b8.png",
+        images: ["/lovable-uploads/0f6022ae-3fd3-4461-b84f-f888ecfd47b8.png"],
         category: "Compacto",
         passengers: 5,
         transmission: "Manual",
@@ -112,7 +112,7 @@ export const CarsProvider = ({ children }: CarsProviderProps) => {
       {
         id: "strada-cs-001",
         name: "FIAT STRADA FREEDOM CS 1.3 ZERO KM",
-        image: "/lovable-uploads/42100d53-07cf-4556-a1df-362f273f5056.png",
+        images: ["/lovable-uploads/42100d53-07cf-4556-a1df-362f273f5056.png"],
         category: "Pickup",
         passengers: 2,
         transmission: "Manual",
@@ -123,7 +123,7 @@ export const CarsProvider = ({ children }: CarsProviderProps) => {
       {
         id: "cronos-002",
         name: "FIAT CRONOS DRIVE 1.3 AUT - VL",
-        image: "/lovable-uploads/077e6481-a56d-46f2-b645-29cebea4d71a.png",
+        images: ["/lovable-uploads/077e6481-a56d-46f2-b645-29cebea4d71a.png"],
         category: "Econômico",
         passengers: 5,
         transmission: "Automático",
@@ -134,7 +134,7 @@ export const CarsProvider = ({ children }: CarsProviderProps) => {
       {
         id: "hb20s-001",
         name: "HYUNDAI HB20S10TA EVOLUT",
-        image: "/lovable-uploads/377a4e9d-1a5b-4b35-b114-6e80af608e36.png",
+        images: ["/lovable-uploads/377a4e9d-1a5b-4b35-b114-6e80af608e36.png"],
         category: "Compacto",
         passengers: 5,
         transmission: "Automático",
@@ -145,7 +145,7 @@ export const CarsProvider = ({ children }: CarsProviderProps) => {
       {
         id: "onix-lt-001",
         name: "CHEVROLET ONIX LT2",
-        image: "/lovable-uploads/132662ce-d8a3-401d-b356-e657d617f7ed.png",
+        images: ["/lovable-uploads/132662ce-d8a3-401d-b356-e657d617f7ed.png"],
         category: "Econômico",
         passengers: 5,
         transmission: "Manual",
