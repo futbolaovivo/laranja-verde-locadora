@@ -21,10 +21,15 @@ const SearchForm = () => {
     });
   };
 
+  const handleSearch = () => {
+    console.log("Executando busca com os filtros:", searchData);
+    // Aqui você pode adicionar a lógica de busca/filtro
+  };
+
   return (
     <section className="py-8 bg-background border-b">
       <div className="container mx-auto px-4">
-        <div className="flex flex-col lg:flex-row items-center gap-4 max-w-6xl mx-auto">
+        <div className="bg-card p-6 rounded-2xl shadow-lg border flex flex-col lg:flex-row items-center gap-4 max-w-6xl mx-auto">
           {/* Campo de busca */}
           <div className="relative flex-1 min-w-[300px]">
             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
@@ -87,6 +92,15 @@ const SearchForm = () => {
             </Select>
           </div>
 
+          {/* Botão Buscar */}
+          <Button 
+            onClick={handleSearch}
+            className="h-12 gap-2 px-6 bg-primary hover:bg-primary/90 text-white font-semibold"
+          >
+            <Search className="h-4 w-4" />
+            Buscar
+          </Button>
+
           {/* Botão Limpar Filtros */}
           <Button 
             variant="outline" 
@@ -94,7 +108,7 @@ const SearchForm = () => {
             className="h-12 gap-2 px-4"
           >
             <RotateCcw className="h-4 w-4" />
-            Limpar filtros
+            Limpar
           </Button>
         </div>
       </div>
