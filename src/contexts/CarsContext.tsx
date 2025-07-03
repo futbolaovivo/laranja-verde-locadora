@@ -35,8 +35,13 @@ interface CarsProviderProps {
 
 export const CarsProvider = ({ children }: CarsProviderProps) => {
   const [cars, setCars] = useState<Car[]>(() => {
-    // Limpa localStorage na inicialização para evitar duplicação
-    localStorage.removeItem('cars');
+    // Tenta carregar do localStorage primeiro
+    const savedCars = localStorage.getItem('cars');
+    if (savedCars) {
+      return JSON.parse(savedCars);
+    }
+    
+    // Se não há dados salvos, usa os dados iniciais
     return [
       {
         id: "cronos-001",
@@ -150,6 +155,11 @@ export const CarsProvider = ({ children }: CarsProviderProps) => {
       }
     ];
   });
+
+  // Salva no localStorage sempre que cars mudar
+  useEffect(() => {
+    localStorage.setItem('cars', JSON.stringify(cars));
+  }, [cars]);
 
   const addCar = (car: Car) => {
     setCars(prev => [...prev, car]);
