@@ -27,7 +27,7 @@ const SearchForm = () => {
   };
 
   return (
-    <section className="py-8 bg-gradient-to-br from-background via-muted/30 to-background border-b">
+    <section className="py-8">
       <div className="container mx-auto px-4">
         <div className="bg-card p-6 rounded-2xl shadow-lg border flex flex-col lg:flex-row items-center gap-4 max-w-6xl mx-auto">
           {/* Campo de busca */}
