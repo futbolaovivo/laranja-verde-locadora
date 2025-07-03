@@ -1,6 +1,7 @@
 import { Menu, X } from "lucide-react";
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -35,21 +36,21 @@ const Navbar = () => {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <div className="flex items-center">
-            <a href="/" className="hover:opacity-80 transition-opacity">
+            <Link to="/" className="hover:opacity-80 transition-opacity">
               <img src="/lovable-uploads/377a4e9d-1a5b-4b35-b114-6e80af608e36.png" alt="MOVI Locadora" className="h-10" />
-            </a>
+            </Link>
           </div>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
-            <a href="/" className="text-white hover:text-white/80 transition-colors">
+            <Link to="/" className="text-white hover:text-white/80 transition-colors">
               Início
-            </a>
-            <a href="/veiculos" className="text-white hover:text-white/80 transition-colors">
+            </Link>
+            <Link to="/veiculos" className="text-white hover:text-white/80 transition-colors">
               Veículos
-            </a>
+            </Link>
             <Button variant="default" size="sm" className="bg-secondary hover:bg-secondary/90 text-white" asChild>
-              <a href="/veiculos#contato">Solicitar Orçamento</a>
+              <Link to="/veiculos#contato">Solicitar Orçamento</Link>
             </Button>
           </div>
 
@@ -70,14 +71,14 @@ const Navbar = () => {
         {isMenuOpen && (
           <div className="md:hidden py-4 border-t border-white/20">
             <div className="flex flex-col space-y-4">
-              <a href="/" className="text-white hover:text-white/80 transition-colors">
+              <Link to="/" className="text-white hover:text-white/80 transition-colors">
                 Início
-              </a>
-              <a href="/veiculos" className="text-white hover:text-white/80 transition-colors">
+              </Link>
+              <Link to="/veiculos" className="text-white hover:text-white/80 transition-colors">
                 Veículos
-              </a>
+              </Link>
               <Button variant="default" size="sm" className="bg-secondary hover:bg-secondary/90 text-white w-fit" asChild>
-                <a href="/veiculos#contato">Solicitar Orçamento</a>
+                <Link to="/veiculos#contato">Solicitar Orçamento</Link>
               </Button>
             </div>
           </div>
