@@ -101,15 +101,6 @@ const SearchForm = () => {
             Buscar
           </Button>
 
-          {/* Botão Limpar Filtros */}
-          <Button 
-            variant="outline" 
-            onClick={clearFilters}
-            className="h-12 gap-2 px-4"
-          >
-            <RotateCcw className="h-4 w-4" />
-            Limpar
-          </Button>
         </div>
       </div>
     </section>
