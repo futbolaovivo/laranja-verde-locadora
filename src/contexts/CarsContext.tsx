@@ -90,7 +90,7 @@ export const CarsProvider = ({ children }: CarsProviderProps) => {
       {
         id: "virtus-001",
         name: "VOLKSWAGEN VIRTUS TSI AUT",
-        image: "/src/assets/virtus-black.jpg",
+        image: "/lovable-uploads/377a4e9d-1a5b-4b35-b114-6e80af608e36.png",
         category: "Intermediário",
         passengers: 5,
         transmission: "Automático",
