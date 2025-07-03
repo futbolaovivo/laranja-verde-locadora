@@ -45,6 +45,9 @@ const Navbar = () => {
             <a href="/" className="text-white hover:text-white/80 transition-colors">
               Início
             </a>
+            <a href="/veiculos" className="text-white hover:text-white/80 transition-colors">
+              Veículos
+            </a>
             <a href="/empresa" className="text-white hover:text-white/80 transition-colors">
               Empresa
             </a>
@@ -72,6 +75,9 @@ const Navbar = () => {
             <div className="flex flex-col space-y-4">
               <a href="/" className="text-white hover:text-white/80 transition-colors">
                 Início
+              </a>
+              <a href="/veiculos" className="text-white hover:text-white/80 transition-colors">
+                Veículos
               </a>
               <a href="/empresa" className="text-white hover:text-white/80 transition-colors">
                 Empresa

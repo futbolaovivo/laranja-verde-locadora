@@ -7,6 +7,7 @@ import { CarsProvider } from "@/contexts/CarsContext";
 import Index from "./pages/Index";
 import Admin from "./pages/Admin";
 import Empresa from "./pages/Empresa";
+import Veiculos from "./pages/Veiculos";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -22,6 +23,7 @@ const App = () => (
             <Route path="/" element={<Index />} />
             <Route path="/admin" element={<Admin />} />
             <Route path="/empresa" element={<Empresa />} />
+            <Route path="/veiculos" element={<Veiculos />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
