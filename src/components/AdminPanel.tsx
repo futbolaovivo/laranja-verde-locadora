@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -12,6 +12,8 @@ import { useCars, Car } from "@/contexts/CarsContext";
 const AdminPanel = () => {
   const { toast } = useToast();
   const { cars, addCar, updateCar, deleteCar } = useCars();
+  const fileInputRef = useRef<HTMLInputElement>(null);
+  const editFileInputRef = useRef<HTMLInputElement>(null);
 
   const [isAddingCar, setIsAddingCar] = useState(false);
   const [isEditingCar, setIsEditingCar] = useState(false);
@@ -36,6 +38,21 @@ const AdminPanel = () => {
     dailyPrice: "",
     status: 'available' as 'available' | 'rented'
   });
+
+  const handleImageUpload = (file: File, isEditing: boolean = false) => {
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        const imageUrl = e.target?.result as string;
+        if (isEditing) {
+          setEditCar({...editCar, image: imageUrl});
+        } else {
+          setNewCar({...newCar, image: imageUrl});
+        }
+      };
+      reader.readAsDataURL(file);
+    }
+  };
 
   const handleAddCar = () => {
     if (!newCar.name || !newCar.category || !newCar.dailyPrice) {
@@ -242,13 +259,24 @@ const AdminPanel = () => {
                   />
                 </div>
                 <div>
-                  <Label htmlFor="image">URL da Imagem</Label>
-                  <Input
-                    id="image"
-                    value={newCar.image}
-                    onChange={(e) => setNewCar({...newCar, image: e.target.value})}
-                    placeholder="https://..."
-                  />
+                  <Label htmlFor="image">Imagem da Capa</Label>
+                  <div className="space-y-2">
+                    <Input
+                      ref={fileInputRef}
+                      type="file"
+                      accept="image/*"
+                      onChange={(e) => {
+                        const file = e.target.files?.[0];
+                        if (file) handleImageUpload(file, false);
+                      }}
+                      className="file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-primary file:text-white hover:file:bg-primary/90"
+                    />
+                    {newCar.image && (
+                      <div className="mt-2">
+                        <img src={newCar.image} alt="Preview" className="w-20 h-20 object-cover rounded border" />
+                      </div>
+                    )}
+                  </div>
                 </div>
                 <div>
                   <Label htmlFor="status">Status</Label>
@@ -353,13 +381,24 @@ const AdminPanel = () => {
                   />
                 </div>
                 <div>
-                  <Label htmlFor="edit-image">URL da Imagem</Label>
-                  <Input
-                    id="edit-image"
-                    value={editCar.image}
-                    onChange={(e) => setEditCar({...editCar, image: e.target.value})}
-                    placeholder="https://..."
-                  />
+                  <Label htmlFor="edit-image">Imagem da Capa</Label>
+                  <div className="space-y-2">
+                    <Input
+                      ref={editFileInputRef}
+                      type="file"
+                      accept="image/*"
+                      onChange={(e) => {
+                        const file = e.target.files?.[0];
+                        if (file) handleImageUpload(file, true);
+                      }}
+                      className="file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-primary file:text-white hover:file:bg-primary/90"
+                    />
+                    {editCar.image && (
+                      <div className="mt-2">
+                        <img src={editCar.image} alt="Preview" className="w-20 h-20 object-cover rounded border" />
+                      </div>
+                    )}
+                  </div>
                 </div>
                 <div>
                   <Label htmlFor="edit-status">Status</Label>
