@@ -1,6 +1,5 @@
 import Navbar from "@/components/Navbar";
 import VehicleCategoriesSection from "@/components/VehicleCategoriesSection";
-import SearchForm from "@/components/SearchForm";
 import VehicleFilters from "@/components/VehicleFilters";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -45,11 +44,6 @@ const Veiculos = () => {
           <p className="text-xl text-white/90 mb-8 max-w-3xl mx-auto">
             Veículos de última geração com tecnologia avançada e segurança garantida para sua tranquilidade
           </p>
-        </div>
-        
-        {/* Search Form Integrated */}
-        <div className="relative container mx-auto px-4 mt-12">
-          <SearchForm />
         </div>
       </section>
       
