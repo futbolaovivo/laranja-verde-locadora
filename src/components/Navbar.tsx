@@ -50,7 +50,7 @@ const Navbar = () => {
               Veículos
             </Link>
             <Button variant="default" size="sm" className="bg-secondary hover:bg-secondary/90 text-white" asChild>
-              <Link to="/veiculos#contato">Solicitar Orçamento</Link>
+              <a href="https://wa.me/5565992851872" target="_blank" rel="noopener noreferrer">Solicitar Orçamento</a>
             </Button>
           </div>
 
@@ -78,7 +78,7 @@ const Navbar = () => {
                 Veículos
               </Link>
               <Button variant="default" size="sm" className="bg-secondary hover:bg-secondary/90 text-white w-fit" asChild>
-                <Link to="/veiculos#contato">Solicitar Orçamento</Link>
+                <a href="https://wa.me/5565992851872" target="_blank" rel="noopener noreferrer">Solicitar Orçamento</a>
               </Button>
             </div>
           </div>

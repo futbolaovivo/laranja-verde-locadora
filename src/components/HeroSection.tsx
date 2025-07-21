@@ -46,7 +46,7 @@ const HeroSection = () => {
               <a href="/veiculos">Ver Categorias</a>
             </Button>
             <Button size="lg" variant="outline" className="border-white hover:bg-white text-zinc-950" asChild>
-              <a href="/contato">Solicitar Contato</a>
+              <a href="https://wa.me/5565992851872" target="_blank" rel="noopener noreferrer">Solicitar Contato</a>
             </Button>
           </div>
         </div>

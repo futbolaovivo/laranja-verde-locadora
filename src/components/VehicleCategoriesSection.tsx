@@ -172,8 +172,11 @@ const VehicleCategoriesSection = () => {
                 <Button 
                   className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-semibold"
                   size="lg"
+                  asChild
                 >
-                  Consultar Disponibilidade
+                  <a href="https://wa.me/5565992851872" target="_blank" rel="noopener noreferrer">
+                    Consultar Disponibilidade
+                  </a>
                 </Button>
               </CardFooter>
             </Card>
@@ -188,8 +191,10 @@ const VehicleCategoriesSection = () => {
             <p className="text-muted-foreground mb-6">
               Entre em contato conosco e encontraremos a solução ideal para sua necessidade
             </p>
-            <Button variant="outline" size="lg" className="border-primary text-primary hover:bg-primary hover:text-primary-foreground">
-              Falar com Especialista
+            <Button variant="outline" size="lg" className="border-primary text-primary hover:bg-primary hover:text-primary-foreground" asChild>
+              <a href="https://wa.me/5565992851872" target="_blank" rel="noopener noreferrer">
+                Falar com Especialista
+              </a>
             </Button>
           </div>
         </div>
