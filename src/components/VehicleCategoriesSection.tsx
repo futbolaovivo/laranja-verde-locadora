@@ -23,8 +23,8 @@ const vehicleCategories: VehicleCategory[] = [
     icon: <Car className="w-8 h-8" />,
     description: "Conforto e economia para suas viagens urbanas",
     includedModels: [
-      "Fiat Cronos Drive 1.3 Aut – VL",
-      "Chevrolet Onix Sedan Premier AT – VL", 
+      "Fiat Cronos Drive 1.3 Aut",
+      "Chevrolet Onix Sedan Premier AT", 
       "Hyundai HB20S10TA Evolution",
       "Volkswagen Virtus TSI Aut",
       "Chevrolet Onix LT2"
@@ -54,7 +54,7 @@ const vehicleCategories: VehicleCategory[] = [
     icon: <Truck className="w-8 h-8" />,
     description: "Robustez e capacidade para trabalho e lazer",
     includedModels: [
-      "Fiat Strada Freedom CD – VL",
+      "Fiat Strada Freedom CD",
       "Chevrolet Montana LTZ 1.2 Turbo Aut"
     ],
     features: ["Cabine Dupla", "Caçamba", "5 Passageiros", "Grande Capacidade"]
