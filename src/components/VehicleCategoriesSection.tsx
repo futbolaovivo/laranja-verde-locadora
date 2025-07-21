@@ -35,7 +35,7 @@ const vehicleCategories: VehicleCategory[] = [
     id: "suv-compacto",
     name: "SUV COMPACTO OU SIMILAR", 
     mainModel: "Jeep Compass ou similar",
-    image: "/lovable-uploads/75717a4b-8d0a-4734-8ec8-4d4b60c3660d.png",
+    image: "/lovable-uploads/570edcfd-38ae-42e7-87d7-0a95db6d1111.png",
     icon: <Car className="w-8 h-8" />,
     description: "Versatilidade e segurança para todos os terrenos",
     includedModels: [
@@ -50,7 +50,7 @@ const vehicleCategories: VehicleCategory[] = [
     id: "picape-dupla",
     name: "PICAPE CABINE DUPLA OU SIMILAR",
     mainModel: "Fiat Strada CD ou similar", 
-    image: "/lovable-uploads/7f822c8b-80a4-4ec0-a34a-e3a33d7ade01.png",
+    image: "/lovable-uploads/151af1d6-20a1-4a52-91f5-ff990fd562be.png",
     icon: <Truck className="w-8 h-8" />,
     description: "Robustez e capacidade para trabalho e lazer",
     includedModels: [
@@ -63,7 +63,7 @@ const vehicleCategories: VehicleCategory[] = [
     id: "picape-simples", 
     name: "PICAPE CABINE SIMPLES OU SIMILAR",
     mainModel: "Fiat Strada CS ou similar",
-    image: "/lovable-uploads/132662ce-d8a3-401d-b356-e657d617f7ed.png", 
+    image: "/lovable-uploads/4183e24f-8159-469b-965d-194f1ac7a8a6.png", 
     icon: <Truck className="w-8 h-8" />,
     description: "Solução eficiente para cargas e trabalho",
     includedModels: [
@@ -76,7 +76,7 @@ const vehicleCategories: VehicleCategory[] = [
     id: "hatch-compacto",
     name: "HATCH COMPACTO OU SIMILAR", 
     mainModel: "Fiat Argo ou similar",
-    image: "/lovable-uploads/077e6481-a56d-46f2-b645-29cebea4d71a.png",
+    image: "/lovable-uploads/11de3e68-f6a7-4d36-9b00-c734482de78d.png",
     icon: <Car className="w-8 h-8" />,
     description: "Agilidade urbana com economia garantida",
     includedModels: [
