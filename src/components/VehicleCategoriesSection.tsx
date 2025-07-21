@@ -19,7 +19,7 @@ const vehicleCategories: VehicleCategory[] = [
     id: "sedan-compacto",
     name: "SEDÃ COMPACTO OU SIMILAR",
     mainModel: "Fiat Cronos ou similar",
-    image: "/lovable-uploads/377a4e9d-1a5b-4b35-b114-6e80af608e36.png",
+    image: "/lovable-uploads/abb84d08-7eeb-4134-a308-f133a4ca30fc.png",
     icon: <Car className="w-8 h-8" />,
     description: "Conforto e economia para suas viagens urbanas",
     includedModels: [
