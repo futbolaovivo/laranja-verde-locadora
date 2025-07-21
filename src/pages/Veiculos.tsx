@@ -1,5 +1,5 @@
 import Navbar from "@/components/Navbar";
-import CarsSection from "@/components/CarsSection";
+import VehicleCategoriesSection from "@/components/VehicleCategoriesSection";
 import SearchForm from "@/components/SearchForm";
 import VehicleFilters from "@/components/VehicleFilters";
 import { Button } from "@/components/ui/button";
@@ -79,10 +79,8 @@ const Veiculos = () => {
         </div>
       </section>
       
-      {/* Cars Section with Modern Design */}
-      <section className="py-20 bg-gradient-to-b from-background to-muted/20">
-        <CarsSection />
-      </section>
+      {/* Vehicle Categories Section */}
+      <VehicleCategoriesSection />
       
       {/* Filters Section */}
       <section className="py-16 bg-muted/50">
