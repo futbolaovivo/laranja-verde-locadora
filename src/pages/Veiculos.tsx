@@ -8,7 +8,6 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Clock, Users, TrendingUp, Award, Mail, Phone, MapPin, MessageCircle, Shield, Zap, Star, CheckCircle } from "lucide-react";
 import { useState } from "react";
-
 const Veiculos = () => {
   const [formData, setFormData] = useState({
     nome: "",
@@ -18,23 +17,22 @@ const Veiculos = () => {
     detalhes: "",
     verificacao: ""
   });
-
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
+    const {
+      name,
+      value
+    } = e.target;
     setFormData(prev => ({
       ...prev,
       [name]: value
     }));
   };
-
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     console.log("Formulário enviado:", formData);
     // Aqui você pode adicionar a lógica para enviar o formulário
   };
-
-  return (
-    <div className="min-h-screen bg-gradient-to-br from-background via-muted/30 to-background">
+  return <div className="min-h-screen bg-gradient-to-br from-background via-muted/30 to-background">
       <Navbar />
       
       {/* Hero Section with Search */}
@@ -56,28 +54,7 @@ const Veiculos = () => {
       </section>
       
       {/* Stats Section */}
-      <section className="py-16 bg-card border-y">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-            <div className="space-y-2">
-              <div className="text-3xl font-bold text-primary">500+</div>
-              <div className="text-muted-foreground">Clientes Satisfeitos</div>
-            </div>
-            <div className="space-y-2">
-              <div className="text-3xl font-bold text-primary">50+</div>
-              <div className="text-muted-foreground">Veículos na Frota</div>
-            </div>
-            <div className="space-y-2">
-              <div className="text-3xl font-bold text-primary">24/7</div>
-              <div className="text-muted-foreground">Suporte Disponível</div>
-            </div>
-            <div className="space-y-2">
-              <div className="text-3xl font-bold text-primary">100%</div>
-              <div className="text-muted-foreground">Segurança Garantida</div>
-            </div>
-          </div>
-        </div>
-      </section>
+      
       
       {/* Vehicle Categories Section */}
       <VehicleCategoriesSection />
@@ -124,11 +101,7 @@ const Veiculos = () => {
             <div className="relative">
               <div className="absolute -inset-4 bg-gradient-to-r from-primary/20 to-secondary/20 rounded-3xl blur-xl"></div>
               <div className="relative bg-card p-8 rounded-2xl border shadow-xl">
-                <img 
-                  src="/lovable-uploads/42100d53-07cf-4556-a1df-362f273f5056.png" 
-                  alt="Qualidade Garantida" 
-                  className="w-full h-auto object-contain rounded-xl"
-                />
+                <img src="/lovable-uploads/42100d53-07cf-4556-a1df-362f273f5056.png" alt="Qualidade Garantida" className="w-full h-auto object-contain rounded-xl" />
               </div>
             </div>
             
@@ -179,11 +152,7 @@ const Veiculos = () => {
             <div className="relative">
               <div className="absolute -inset-4 bg-gradient-to-r from-secondary/20 to-primary/20 rounded-3xl blur-xl"></div>
               <div className="relative bg-card p-8 rounded-2xl border shadow-xl">
-                <img 
-                  src="/lovable-uploads/0f6022ae-3fd3-4461-b84f-f888ecfd47b8.png" 
-                  alt="Aperto de mãos entregando chaves do carro" 
-                  className="w-full h-80 object-cover rounded-xl"
-                />
+                <img src="/lovable-uploads/0f6022ae-3fd3-4461-b84f-f888ecfd47b8.png" alt="Aperto de mãos entregando chaves do carro" className="w-full h-80 object-cover rounded-xl" />
               </div>
             </div>
           </div>
@@ -371,12 +340,7 @@ const Veiculos = () => {
                   <p className="text-lg mb-6">
                     Clique no botão abaixo e confira nossa localização exata no mapa
                   </p>
-                  <a 
-                    href="https://www.google.com.br/maps/place/Av.+Goi%C3%A1s,+1374+-+Alvorada,+Lucas+do+Rio+Verde+-+MT,+78455-000/@-13.081501,-55.9146912,16z/data=!3m1!4b1!4m6!3m5!1s0x93a0f3ecc15b976f:0xb45b6ae1594100e2!8m2!3d-13.081501!4d-55.9146912!16s%2Fg%2F11mcncjczd?entry=ttu&g_ep=EgoyMDI1MDYyNi4wIKXMDSoASAFQAw%3D%3D"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center px-8 py-4 bg-white text-primary font-bold rounded-xl hover:bg-white/90 transition-all transform hover:scale-105"
-                  >
+                  <a href="https://www.google.com.br/maps/place/Av.+Goi%C3%A1s,+1374+-+Alvorada,+Lucas+do+Rio+Verde+-+MT,+78455-000/@-13.081501,-55.9146912,16z/data=!3m1!4b1!4m6!3m5!1s0x93a0f3ecc15b976f:0xb45b6ae1594100e2!8m2!3d-13.081501!4d-55.9146912!16s%2Fg%2F11mcncjczd?entry=ttu&g_ep=EgoyMDI1MDYyNi4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener noreferrer" className="inline-flex items-center px-8 py-4 bg-white text-primary font-bold rounded-xl hover:bg-white/90 transition-all transform hover:scale-105">
                     <MapPin className="w-5 h-5 mr-2" />
                     Ver no Google Maps
                   </a>
@@ -387,103 +351,11 @@ const Veiculos = () => {
             {/* Contact Form */}
             <div className="relative">
               <div className="absolute -inset-4 bg-gradient-to-r from-primary/20 to-secondary/20 rounded-3xl blur-xl"></div>
-              <div className="relative bg-card p-10 rounded-3xl border shadow-2xl">
-                <div className="flex items-center space-x-3 mb-8">
-                  <div className="w-12 h-12 bg-gradient-to-br from-primary to-secondary rounded-xl flex items-center justify-center">
-                    <MessageCircle className="w-6 h-6 text-white" />
-                  </div>
-                  <h2 className="text-3xl font-bold text-foreground">Solicite seu Orçamento!</h2>
-                </div>
-                
-                <p className="text-lg text-muted-foreground mb-8">
-                  Preencha o formulário e receba uma <strong className="text-foreground">resposta personalizada</strong> em até 30 minutos. Garantimos o melhor preço!
-                </p>
-
-                <form onSubmit={handleSubmit} className="space-y-6">
-                  <div>
-                    <Label htmlFor="nome" className="text-lg font-semibold">Nome Completo</Label>
-                    <Input
-                      id="nome"
-                      name="nome"
-                      type="text"
-                      value={formData.nome}
-                      onChange={handleInputChange}
-                      required
-                      className="mt-2 h-12 text-lg border-2 focus:border-primary"
-                      placeholder="Digite seu nome completo"
-                    />
-                  </div>
-
-                  <div>
-                    <Label htmlFor="telefone" className="text-lg font-semibold">WhatsApp</Label>
-                    <Input
-                      id="telefone"
-                      name="telefone"
-                      type="tel"
-                      value={formData.telefone}
-                      onChange={handleInputChange}
-                      required
-                      className="mt-2 h-12 text-lg border-2 focus:border-primary"
-                      placeholder="(65) 99999-9999"
-                    />
-                  </div>
-
-                  <div>
-                    <Label htmlFor="email" className="text-lg font-semibold">E-mail</Label>
-                    <Input
-                      id="email"
-                      name="email"
-                      type="email"
-                      value={formData.email}
-                      onChange={handleInputChange}
-                      required
-                      className="mt-2 h-12 text-lg border-2 focus:border-primary"
-                      placeholder="seu@email.com"
-                    />
-                  </div>
-
-                  <div>
-                    <Label htmlFor="endereco" className="text-lg font-semibold">Endereço Completo</Label>
-                    <Input
-                      id="endereco"
-                      name="endereco"
-                      type="text"
-                      value={formData.endereco}
-                      onChange={handleInputChange}
-                      required
-                      className="mt-2 h-12 text-lg border-2 focus:border-primary"
-                      placeholder="Cidade, Rua, Número"
-                    />
-                  </div>
-
-                  <div>
-                    <Label htmlFor="detalhes" className="text-lg font-semibold">Detalhes da Locação</Label>
-                    <Textarea
-                      id="detalhes"
-                      name="detalhes"
-                      value={formData.detalhes}
-                      onChange={handleInputChange}
-                      rows={4}
-                      className="mt-2 text-lg border-2 focus:border-primary resize-none"
-                      placeholder="Período desejado, tipo de veículo, destino da viagem..."
-                    />
-                  </div>
-
-                  <Button 
-                    type="submit" 
-                    className="w-full h-14 text-lg font-bold bg-gradient-to-r from-secondary to-primary hover:from-secondary/90 hover:to-primary/90 text-white rounded-xl transform hover:scale-105 transition-all shadow-lg"
-                  >
-                    <MessageCircle className="w-5 h-5 mr-2" />
-                    Solicitar Orçamento Agora!
-                  </Button>
-                </form>
-              </div>
+              
             </div>
           </div>
         </div>
       </section>
-    </div>
-  );
+    </div>;
 };
-
 export default Veiculos;
