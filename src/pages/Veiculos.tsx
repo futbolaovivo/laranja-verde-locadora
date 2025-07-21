@@ -272,12 +272,12 @@ const Veiculos = () => {
             </p>
           </div>
           
-          <div className="grid lg:grid-cols-2 gap-16">
+          <div className="max-w-4xl mx-auto">
             {/* Contact Information */}
-            <div className="space-y-8">
+            <div className="space-y-8 text-center">
               {/* Email */}
-              <div className="group flex items-start space-x-6 p-6 bg-card rounded-2xl border shadow-lg hover:shadow-xl transition-all">
-                <div className="w-16 h-16 bg-gradient-to-br from-primary to-secondary rounded-2xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
+              <div className="group flex flex-col items-center space-y-4 p-6 bg-card rounded-2xl border shadow-lg hover:shadow-xl transition-all mx-auto max-w-md">
+                <div className="w-16 h-16 bg-gradient-to-br from-primary to-secondary rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform">
                   <Mail className="w-8 h-8 text-white" />
                 </div>
                 <div>
@@ -287,8 +287,8 @@ const Veiculos = () => {
               </div>
 
               {/* Phone */}
-              <div className="group flex items-start space-x-6 p-6 bg-card rounded-2xl border shadow-lg hover:shadow-xl transition-all">
-                <div className="w-16 h-16 bg-gradient-to-br from-secondary to-primary rounded-2xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
+              <div className="group flex flex-col items-center space-y-4 p-6 bg-card rounded-2xl border shadow-lg hover:shadow-xl transition-all mx-auto max-w-md">
+                <div className="w-16 h-16 bg-gradient-to-br from-secondary to-primary rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform">
                   <Phone className="w-8 h-8 text-white" />
                 </div>
                 <div>
@@ -299,8 +299,8 @@ const Veiculos = () => {
               </div>
 
               {/* Business Hours */}
-              <div className="group flex items-start space-x-6 p-6 bg-card rounded-2xl border shadow-lg hover:shadow-xl transition-all">
-                <div className="w-16 h-16 bg-gradient-to-br from-primary to-secondary rounded-2xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
+              <div className="group flex flex-col items-center space-y-4 p-6 bg-card rounded-2xl border shadow-lg hover:shadow-xl transition-all mx-auto max-w-md">
+                <div className="w-16 h-16 bg-gradient-to-br from-primary to-secondary rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform">
                   <Clock className="w-8 h-8 text-white" />
                 </div>
                 <div>
@@ -313,8 +313,8 @@ const Veiculos = () => {
               </div>
 
               {/* Address */}
-              <div className="group flex items-start space-x-6 p-6 bg-card rounded-2xl border shadow-lg hover:shadow-xl transition-all">
-                <div className="w-16 h-16 bg-gradient-to-br from-secondary to-primary rounded-2xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
+              <div className="group flex flex-col items-center space-y-4 p-6 bg-card rounded-2xl border shadow-lg hover:shadow-xl transition-all mx-auto max-w-md">
+                <div className="w-16 h-16 bg-gradient-to-br from-secondary to-primary rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform">
                   <MapPin className="w-8 h-8 text-white" />
                 </div>
                 <div>
@@ -328,8 +328,8 @@ const Veiculos = () => {
               </div>
 
               {/* Map Link */}
-              <div className="text-center pt-8">
-                <div className="bg-gradient-to-r from-primary to-secondary rounded-2xl p-8 text-white">
+              <div className="pt-8">
+                <div className="bg-gradient-to-r from-primary to-secondary rounded-2xl p-8 text-white max-w-lg mx-auto">
                   <h3 className="text-3xl font-bold mb-4">Venha nos Visitar!</h3>
                   <p className="text-lg mb-6">
                     Clique no botão abaixo e confira nossa localização exata no mapa
@@ -340,12 +340,6 @@ const Veiculos = () => {
                   </a>
                 </div>
               </div>
-            </div>
-
-            {/* Contact Form */}
-            <div className="relative">
-              <div className="absolute -inset-4 bg-gradient-to-r from-primary/20 to-secondary/20 rounded-3xl blur-xl"></div>
-              
             </div>
           </div>
         </div>
