@@ -1,6 +1,7 @@
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { Car, Truck, Shield, Zap } from "lucide-react";
 
 interface VehicleCategory {
@@ -105,83 +106,95 @@ const VehicleCategoriesSection = () => {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {vehicleCategories.map((category) => (
-            <Card key={category.id} className="group overflow-hidden border-0 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 bg-card">
-              <div className="relative overflow-hidden">
-                <img 
-                  src={category.image} 
-                  alt={category.mainModel}
-                  className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
-                />
-                <div className="absolute top-4 left-4">
-                  <Badge variant="secondary" className="bg-primary text-primary-foreground font-semibold">
-                    {category.icon}
-                    <span className="ml-2">Disponível</span>
-                  </Badge>
-                </div>
-              </div>
-              
-              <CardHeader className="pb-4">
-                <CardTitle className="text-lg font-bold text-foreground leading-tight">
-                  {category.name}
-                </CardTitle>
-                <div className="text-center py-2">
-                  <p className="text-xl font-bold text-primary">
-                    {category.mainModel}
-                  </p>
-                </div>
-              </CardHeader>
-
-              <CardContent className="space-y-4">
-                <p className="text-muted-foreground text-sm">
-                  {category.description}
-                </p>
-                
-                <div className="space-y-2">
-                  <h4 className="font-semibold text-sm text-foreground">Características:</h4>
-                  <div className="grid grid-cols-2 gap-1">
-                    {category.features.map((feature, index) => (
-                      <div key={index} className="flex items-center gap-1 text-xs text-muted-foreground">
-                        <Zap className="w-3 h-3 text-primary" />
-                        <span>{feature}</span>
-                      </div>
-                    ))}
+        <Carousel
+          opts={{
+            align: "start",
+            loop: true,
+          }}
+          className="w-full max-w-6xl mx-auto"
+        >
+          <CarouselContent className="-ml-2 md:-ml-4">
+            {vehicleCategories.map((category) => (
+              <CarouselItem key={category.id} className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3">
+                <Card className="group overflow-hidden border-0 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 bg-card h-full">
+                  <div className="relative overflow-hidden">
+                    <img 
+                      src={category.image} 
+                      alt={category.mainModel}
+                      className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
+                    />
+                    <div className="absolute top-4 left-4">
+                      <Badge variant="secondary" className="bg-primary text-primary-foreground font-semibold">
+                        {category.icon}
+                        <span className="ml-2">Disponível</span>
+                      </Badge>
+                    </div>
                   </div>
-                </div>
+                  
+                  <CardHeader className="pb-4">
+                    <CardTitle className="text-lg font-bold text-foreground leading-tight">
+                      {category.name}
+                    </CardTitle>
+                    <div className="text-center py-2">
+                      <p className="text-xl font-bold text-primary">
+                        {category.mainModel}
+                      </p>
+                    </div>
+                  </CardHeader>
 
-                <div className="space-y-2">
-                  <h4 className="font-semibold text-sm text-foreground">Modelos incluídos:</h4>
-                  <ul className="space-y-1">
-                    {category.includedModels.slice(0, 3).map((model, index) => (
-                      <li key={index} className="text-xs text-muted-foreground flex items-center gap-1">
-                        <span className="w-1 h-1 bg-primary rounded-full"></span>
-                        {model}
-                      </li>
-                    ))}
-                    {category.includedModels.length > 3 && (
-                      <li className="text-xs text-muted-foreground italic">
-                        e outros modelos similares...
-                      </li>
-                    )}
-                  </ul>
-                </div>
-              </CardContent>
+                  <CardContent className="space-y-4">
+                    <p className="text-muted-foreground text-sm">
+                      {category.description}
+                    </p>
+                    
+                    <div className="space-y-2">
+                      <h4 className="font-semibold text-sm text-foreground">Características:</h4>
+                      <div className="grid grid-cols-2 gap-1">
+                        {category.features.map((feature, index) => (
+                          <div key={index} className="flex items-center gap-1 text-xs text-muted-foreground">
+                            <Zap className="w-3 h-3 text-primary" />
+                            <span>{feature}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
 
-              <CardFooter className="pt-4">
-                <Button 
-                  className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-semibold"
-                  size="lg"
-                  asChild
-                >
-                  <a href="https://wa.me/5565992851872" target="_blank" rel="noopener noreferrer">
-                    Consultar Disponibilidade
-                  </a>
-                </Button>
-              </CardFooter>
-            </Card>
-          ))}
-        </div>
+                    <div className="space-y-2">
+                      <h4 className="font-semibold text-sm text-foreground">Modelos incluídos:</h4>
+                      <ul className="space-y-1">
+                        {category.includedModels.slice(0, 3).map((model, index) => (
+                          <li key={index} className="text-xs text-muted-foreground flex items-center gap-1">
+                            <span className="w-1 h-1 bg-primary rounded-full"></span>
+                            {model}
+                          </li>
+                        ))}
+                        {category.includedModels.length > 3 && (
+                          <li className="text-xs text-muted-foreground italic">
+                            e outros modelos similares...
+                          </li>
+                        )}
+                      </ul>
+                    </div>
+                  </CardContent>
+
+                  <CardFooter className="pt-4">
+                    <Button 
+                      className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-semibold"
+                      size="lg"
+                      asChild
+                    >
+                      <a href="https://wa.me/5565992851872" target="_blank" rel="noopener noreferrer">
+                        Consultar Disponibilidade
+                      </a>
+                    </Button>
+                  </CardFooter>
+                </Card>
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+          <CarouselPrevious />
+          <CarouselNext />
+        </Carousel>
 
         <div className="text-center mt-16">
           <div className="bg-muted/50 rounded-2xl p-8 border">
