@@ -1,8 +1,9 @@
+import { useState, useEffect } from "react";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
-import { Car, Truck, Shield, Zap } from "lucide-react";
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious, CarouselApi } from "@/components/ui/carousel";
+import { Car, Truck, Shield, Zap, ChevronLeft, ChevronRight } from "lucide-react";
 
 interface VehicleCategory {
   id: string;
@@ -90,6 +91,44 @@ const vehicleCategories: VehicleCategory[] = [
 ];
 
 const VehicleCategoriesSection = () => {
+  const [api, setApi] = useState<CarouselApi>();
+  const [current, setCurrent] = useState(0);
+  const [count, setCount] = useState(0);
+  const [showArrows, setShowArrows] = useState(true);
+  const [isPressed, setIsPressed] = useState(false);
+
+  useEffect(() => {
+    if (!api) return;
+
+    setCount(api.scrollSnapList().length);
+    setCurrent(api.selectedScrollSnap() + 1);
+
+    api.on("select", () => {
+      setCurrent(api.selectedScrollSnap() + 1);
+    });
+
+    // Auto-demonstração no primeiro acesso (apenas mobile)
+    const isMobile = window.innerWidth < 768;
+    if (isMobile) {
+      setTimeout(() => {
+        api.scrollNext();
+        setTimeout(() => api.scrollPrev(), 1000);
+      }, 2000);
+    }
+
+    // Auto-hide arrows em mobile
+    if (isMobile) {
+      const timer = setTimeout(() => setShowArrows(false), 3000);
+      return () => clearTimeout(timer);
+    }
+  }, [api]);
+
+  const handleTouchStart = () => {
+    setShowArrows(true);
+    setIsPressed(true);
+    setTimeout(() => setIsPressed(false), 150);
+  };
+
   return (
     <section id="categorias-veiculos" className="py-20 bg-gradient-to-b from-background to-muted/20">
       <div className="container mx-auto px-4">
@@ -106,18 +145,21 @@ const VehicleCategoriesSection = () => {
           </div>
         </div>
 
-        <div className="relative">
+        <div className="relative" onTouchStart={handleTouchStart}>
           <Carousel
+            setApi={setApi}
             opts={{
-              align: "start",
+              align: "center",
               loop: true,
+              skipSnaps: false,
+              dragFree: false,
             }}
             className="w-full max-w-6xl mx-auto"
           >
-            <CarouselContent className="-ml-2 md:-ml-4">
+            <CarouselContent className="-ml-2 md:-ml-4 snap-x snap-mandatory">
               {vehicleCategories.map((category) => (
-                <CarouselItem key={category.id} className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3">
-                  <Card className="group overflow-hidden border-0 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 bg-card h-full">
+                <CarouselItem key={category.id} className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3 snap-center">
+                  <Card className={`group overflow-hidden border-0 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 bg-card h-full ${isPressed ? 'scale-95 shadow-xl' : ''} active:scale-95 active:shadow-xl`}>
                     <div className="relative overflow-hidden">
                       <img 
                         src={category.image} 
@@ -180,7 +222,7 @@ const VehicleCategoriesSection = () => {
 
                     <CardFooter className="pt-4">
                       <Button 
-                        className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-semibold"
+                        className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-semibold min-h-[48px] active:scale-95 transition-transform"
                         size="lg"
                         asChild
                       >
@@ -194,15 +236,47 @@ const VehicleCategoriesSection = () => {
               ))}
             </CarouselContent>
             
-            {/* Setas com melhor visibilidade mobile */}
-            <CarouselPrevious className="hidden sm:flex -left-6 md:-left-12 h-12 w-12 bg-white/90 border-2 border-primary/20 hover:bg-primary hover:text-white shadow-lg" />
-            <CarouselNext className="hidden sm:flex -right-6 md:-right-12 h-12 w-12 bg-white/90 border-2 border-primary/20 hover:bg-primary hover:text-white shadow-lg" />
+            {/* Setas desktop com melhor visibilidade */}
+            <CarouselPrevious className="hidden sm:flex -left-6 md:-left-12 h-12 w-12 bg-white/90 border-2 border-primary/20 hover:bg-primary hover:text-white shadow-lg hover:scale-110 transition-all" />
+            <CarouselNext className="hidden sm:flex -right-6 md:-right-12 h-12 w-12 bg-white/90 border-2 border-primary/20 hover:bg-primary hover:text-white shadow-lg hover:scale-110 transition-all" />
+            
+            {/* Setas mobile semitransparentes que aparecem/somem */}
+            <button
+              onClick={() => api?.scrollPrev()}
+              className={`sm:hidden absolute left-2 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-black/40 backdrop-blur-sm rounded-full flex items-center justify-center text-white transition-all duration-500 min-h-[48px] min-w-[48px] active:scale-95 active:bg-black/60 ${showArrows ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
+            >
+              <ChevronLeft className="w-6 h-6" />
+            </button>
+            <button
+              onClick={() => api?.scrollNext()}
+              className={`sm:hidden absolute right-2 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-black/40 backdrop-blur-sm rounded-full flex items-center justify-center text-white transition-all duration-500 min-h-[48px] min-w-[48px] active:scale-95 active:bg-black/60 ${showArrows ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
+            >
+              <ChevronRight className="w-6 h-6" />
+            </button>
           </Carousel>
           
-          {/* Indicador de deslize para mobile */}
-          <div className="flex sm:hidden justify-center mt-6 text-center">
-            <div className="bg-muted/80 rounded-full px-4 py-2 text-sm text-muted-foreground flex items-center gap-2">
-              <span>Deslize para ver mais</span>
+          {/* Indicadores de navegação (dots) */}
+          <div className="flex justify-center mt-6 gap-2">
+            {Array.from({ length: count }).map((_, index) => (
+              <button
+                key={index}
+                onClick={() => api?.scrollTo(index)}
+                className={`w-3 h-3 rounded-full transition-all duration-300 min-h-[32px] min-w-[32px] flex items-center justify-center ${
+                  index + 1 === current 
+                    ? 'bg-primary scale-125' 
+                    : 'bg-muted-foreground/30 hover:bg-muted-foreground/50'
+                }`}
+                aria-label={`Ir para slide ${index + 1}`}
+              >
+                <span className="w-3 h-3 rounded-full bg-current"></span>
+              </button>
+            ))}
+          </div>
+          
+          {/* Indicador de deslize para mobile (aparece apenas nas primeiras visitas) */}
+          <div className="flex sm:hidden justify-center mt-4 text-center">
+            <div className="bg-muted/80 rounded-full px-4 py-2 text-sm text-muted-foreground flex items-center gap-2 animate-fade-in">
+              <span>Deslize ou toque nas setas</span>
               <div className="flex gap-1">
                 <span className="w-2 h-2 bg-primary rounded-full animate-pulse"></span>
                 <span className="w-2 h-2 bg-primary/60 rounded-full animate-pulse" style={{ animationDelay: '0.5s' }}></span>
@@ -220,7 +294,12 @@ const VehicleCategoriesSection = () => {
             <p className="text-muted-foreground mb-6">
               Entre em contato conosco e encontraremos a solução ideal para sua necessidade
             </p>
-            <Button variant="outline" size="lg" className="border-primary text-primary hover:bg-primary hover:text-primary-foreground" asChild>
+            <Button 
+              variant="outline" 
+              size="lg" 
+              className="border-primary text-primary hover:bg-primary hover:text-primary-foreground min-h-[48px] active:scale-95 transition-transform" 
+              asChild
+            >
               <a href="https://wa.me/5565992851872" target="_blank" rel="noopener noreferrer">
                 Falar com Especialista
               </a>
