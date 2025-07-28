@@ -1,10 +1,14 @@
 import { Button } from "@/components/ui/button";
 import { Check } from "lucide-react";
 import heroImage from "@/assets/virtus-landscape.jpg";
+
 const HeroSection = () => {
-  return <section className="relative min-h-screen flex items-center justify-center bg-cover bg-center bg-no-repeat" style={{
-    backgroundImage: `url(${heroImage})`
-  }}>
+  return <section 
+    className="relative min-h-screen flex items-center justify-center bg-cover bg-center bg-no-repeat bg-gray-900" 
+    style={{
+      backgroundImage: `url(${heroImage})`
+    }}
+  >
       {/* Overlay */}
       <div className="absolute inset-0 bg-black/40"></div>
       
