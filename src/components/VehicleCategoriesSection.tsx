@@ -106,95 +106,111 @@ const VehicleCategoriesSection = () => {
           </div>
         </div>
 
-        <Carousel
-          opts={{
-            align: "start",
-            loop: true,
-          }}
-          className="w-full max-w-6xl mx-auto"
-        >
-          <CarouselContent className="-ml-2 md:-ml-4">
-            {vehicleCategories.map((category) => (
-              <CarouselItem key={category.id} className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3">
-                <Card className="group overflow-hidden border-0 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 bg-card h-full">
-                  <div className="relative overflow-hidden">
-                    <img 
-                      src={category.image} 
-                      alt={category.mainModel}
-                      className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
-                    />
-                    <div className="absolute top-4 left-4">
-                      <Badge variant="secondary" className="bg-primary text-primary-foreground font-semibold">
-                        {category.icon}
-                        <span className="ml-2">Disponível</span>
-                      </Badge>
-                    </div>
-                  </div>
-                  
-                  <CardHeader className="pb-4">
-                    <CardTitle className="text-lg font-bold text-foreground leading-tight">
-                      {category.name}
-                    </CardTitle>
-                    <div className="text-center py-2">
-                      <p className="text-xl font-bold text-primary">
-                        {category.mainModel}
-                      </p>
-                    </div>
-                  </CardHeader>
-
-                  <CardContent className="space-y-4">
-                    <p className="text-muted-foreground text-sm">
-                      {category.description}
-                    </p>
-                    
-                    <div className="space-y-2">
-                      <h4 className="font-semibold text-sm text-foreground">Características:</h4>
-                      <div className="grid grid-cols-2 gap-1">
-                        {category.features.map((feature, index) => (
-                          <div key={index} className="flex items-center gap-1 text-xs text-muted-foreground">
-                            <Zap className="w-3 h-3 text-primary" />
-                            <span>{feature}</span>
-                          </div>
-                        ))}
+        <div className="relative">
+          <Carousel
+            opts={{
+              align: "start",
+              loop: true,
+            }}
+            className="w-full max-w-6xl mx-auto"
+          >
+            <CarouselContent className="-ml-2 md:-ml-4">
+              {vehicleCategories.map((category) => (
+                <CarouselItem key={category.id} className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3">
+                  <Card className="group overflow-hidden border-0 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 bg-card h-full">
+                    <div className="relative overflow-hidden">
+                      <img 
+                        src={category.image} 
+                        alt={category.mainModel}
+                        className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
+                      />
+                      <div className="absolute top-4 left-4">
+                        <Badge variant="secondary" className="bg-primary text-primary-foreground font-semibold">
+                          {category.icon}
+                          <span className="ml-2">Disponível</span>
+                        </Badge>
                       </div>
                     </div>
+                    
+                    <CardHeader className="pb-4">
+                      <CardTitle className="text-lg font-bold text-foreground leading-tight">
+                        {category.name}
+                      </CardTitle>
+                      <div className="text-center py-2">
+                        <p className="text-xl font-bold text-primary">
+                          {category.mainModel}
+                        </p>
+                      </div>
+                    </CardHeader>
 
-                    <div className="space-y-2">
-                      <h4 className="font-semibold text-sm text-foreground">Modelos incluídos:</h4>
-                      <ul className="space-y-1">
-                        {category.includedModels.slice(0, 3).map((model, index) => (
-                          <li key={index} className="text-xs text-muted-foreground flex items-center gap-1">
-                            <span className="w-1 h-1 bg-primary rounded-full"></span>
-                            {model}
-                          </li>
-                        ))}
-                        {category.includedModels.length > 3 && (
-                          <li className="text-xs text-muted-foreground italic">
-                            e outros modelos similares...
-                          </li>
-                        )}
-                      </ul>
-                    </div>
-                  </CardContent>
+                    <CardContent className="space-y-4">
+                      <p className="text-muted-foreground text-sm">
+                        {category.description}
+                      </p>
+                      
+                      <div className="space-y-2">
+                        <h4 className="font-semibold text-sm text-foreground">Características:</h4>
+                        <div className="grid grid-cols-2 gap-1">
+                          {category.features.map((feature, index) => (
+                            <div key={index} className="flex items-center gap-1 text-xs text-muted-foreground">
+                              <Zap className="w-3 h-3 text-primary" />
+                              <span>{feature}</span>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
 
-                  <CardFooter className="pt-4">
-                    <Button 
-                      className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-semibold"
-                      size="lg"
-                      asChild
-                    >
-                      <a href="https://wa.me/5565992851872" target="_blank" rel="noopener noreferrer">
-                        Consultar Disponibilidade
-                      </a>
-                    </Button>
-                  </CardFooter>
-                </Card>
-              </CarouselItem>
-            ))}
-          </CarouselContent>
-          <CarouselPrevious />
-          <CarouselNext />
-        </Carousel>
+                      <div className="space-y-2">
+                        <h4 className="font-semibold text-sm text-foreground">Modelos incluídos:</h4>
+                        <ul className="space-y-1">
+                          {category.includedModels.slice(0, 3).map((model, index) => (
+                            <li key={index} className="text-xs text-muted-foreground flex items-center gap-1">
+                              <span className="w-1 h-1 bg-primary rounded-full"></span>
+                              {model}
+                            </li>
+                          ))}
+                          {category.includedModels.length > 3 && (
+                            <li className="text-xs text-muted-foreground italic">
+                              e outros modelos similares...
+                            </li>
+                          )}
+                        </ul>
+                      </div>
+                    </CardContent>
+
+                    <CardFooter className="pt-4">
+                      <Button 
+                        className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-semibold"
+                        size="lg"
+                        asChild
+                      >
+                        <a href="https://wa.me/5565992851872" target="_blank" rel="noopener noreferrer">
+                          Consultar Disponibilidade
+                        </a>
+                      </Button>
+                    </CardFooter>
+                  </Card>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            
+            {/* Setas com melhor visibilidade mobile */}
+            <CarouselPrevious className="hidden sm:flex -left-6 md:-left-12 h-12 w-12 bg-white/90 border-2 border-primary/20 hover:bg-primary hover:text-white shadow-lg" />
+            <CarouselNext className="hidden sm:flex -right-6 md:-right-12 h-12 w-12 bg-white/90 border-2 border-primary/20 hover:bg-primary hover:text-white shadow-lg" />
+          </Carousel>
+          
+          {/* Indicador de deslize para mobile */}
+          <div className="flex sm:hidden justify-center mt-6 text-center">
+            <div className="bg-muted/80 rounded-full px-4 py-2 text-sm text-muted-foreground flex items-center gap-2">
+              <span>Deslize para ver mais</span>
+              <div className="flex gap-1">
+                <span className="w-2 h-2 bg-primary rounded-full animate-pulse"></span>
+                <span className="w-2 h-2 bg-primary/60 rounded-full animate-pulse" style={{ animationDelay: '0.5s' }}></span>
+                <span className="w-2 h-2 bg-primary/30 rounded-full animate-pulse" style={{ animationDelay: '1s' }}></span>
+              </div>
+            </div>
+          </div>
+        </div>
 
         <div className="text-center mt-16">
           <div className="bg-muted/50 rounded-2xl p-8 border">
