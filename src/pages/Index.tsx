@@ -8,7 +8,6 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Clock, Users, TrendingUp, Award, Mail, Phone, MapPin, MessageCircle, Shield, Zap, Star, CheckCircle } from "lucide-react";
 import { useState } from "react";
-
 const Index = () => {
   const [formData, setFormData] = useState({
     nome: "",
@@ -18,23 +17,22 @@ const Index = () => {
     detalhes: "",
     verificacao: ""
   });
-
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
+    const {
+      name,
+      value
+    } = e.target;
     setFormData(prev => ({
       ...prev,
       [name]: value
     }));
   };
-
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     console.log("Formulário enviado:", formData);
     // Aqui você pode adicionar a lógica para enviar o formulário
   };
-
-  return (
-    <div className="min-h-screen bg-gradient-to-br from-background via-muted/30 to-background">
+  return <div className="min-h-screen bg-gradient-to-br from-background via-muted/30 to-background">
       <Navbar />
       <HeroSection />
       
@@ -308,7 +306,7 @@ const Index = () => {
                 </div>
                 <div>
                   <h3 className="text-2xl font-bold text-foreground mb-3">Localização</h3>
-                  <p className="text-lg text-muted-foreground font-medium">Cuiabá, Mato Grosso</p>
+                  <p className="text-lg text-muted-foreground font-medium">Lucas do Rio Verde e Região</p>
                   <p className="text-sm text-muted-foreground">Atendimento em toda região metropolitana</p>
                 </div>
               </div>
@@ -326,8 +324,6 @@ const Index = () => {
           </div>
         </div>
       </section>
-    </div>
-  );
+    </div>;
 };
-
 export default Index;
