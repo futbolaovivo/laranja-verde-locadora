@@ -38,18 +38,6 @@ const Index = () => {
       <Navbar />
       <HeroSection />
       
-      {/* Hero Section with Search */}
-      <section className="relative py-20 bg-gradient-to-br from-primary via-primary/90 to-secondary overflow-hidden">
-        <div className="absolute inset-0 bg-black/20"></div>
-        <div className="relative container mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 animate-fade-in">
-            NOSSA <span className="text-secondary">FROTA</span>
-          </h1>
-          <p className="text-xl text-white/90 mb-8 max-w-3xl mx-auto">
-            Veículos de última geração com tecnologia avançada e segurança garantida para sua tranquilidade
-          </p>
-        </div>
-      </section>
       
       {/* Vehicle Categories Section */}
       <VehicleCategoriesSection />
