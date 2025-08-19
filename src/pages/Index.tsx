@@ -2,6 +2,7 @@ import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
 import VehicleCategoriesSection from "@/components/VehicleCategoriesSection";
 import VehicleFilters from "@/components/VehicleFilters";
+import CarsSection from "@/components/CarsSection";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -36,6 +37,8 @@ const Index = () => {
       <Navbar />
       <HeroSection />
       
+      {/* Cars Section */}
+      <CarsSection />
       
       {/* Vehicle Categories Section */}
       <VehicleCategoriesSection />
