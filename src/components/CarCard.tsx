@@ -1,3 +1,4 @@
+
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -16,11 +17,16 @@ interface CarCardProps {
 }
 
 const CarCard = ({ name, images, category, passengers, transmission, fuel, dailyPrice, status }: CarCardProps) => {
+  // Safely get the first image or use a fallback
+  const primaryImage = images && images.length > 0 
+    ? images[0] 
+    : "https://images.unsplash.com/photo-1549399290-8121fd9f9c80?w=400&h=300&fit=crop";
+
   return (
     <Card className="overflow-hidden hover:shadow-lg transition-shadow">
       <div className="relative">
         <img 
-          src={images[0] || "https://images.unsplash.com/photo-1549399290-8121fd9f9c80?w=400&h=300&fit=crop"} 
+          src={primaryImage} 
           alt={name}
           className="w-full h-48 object-contain bg-gray-50"
         />
