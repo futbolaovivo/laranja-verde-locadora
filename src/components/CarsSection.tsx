@@ -31,7 +31,7 @@ const CarsSection = () => {
                   <CardContent className="p-0">
                     <div className="relative">
                       <img 
-                        src={car.images[0]} 
+                        src={car.images?.[0] || '/placeholder.svg'} 
                         alt={car.name}
                         className="w-full h-48 object-cover rounded-t-lg"
                       />
