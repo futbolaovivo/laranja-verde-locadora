@@ -43,7 +43,7 @@ const HeroSection = () => {
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4">
             <Button size="lg" className="bg-secondary hover:bg-secondary/90 text-white" asChild>
-              <a href="/veiculos">NOSSA FROTA</a>
+              <a href="#carros">NOSSA FROTA</a>
             </Button>
             <Button size="lg" variant="outline" className="border-white hover:bg-white text-zinc-950" asChild>
               <a href="https://wa.me/5565992851872" target="_blank" rel="noopener noreferrer">Solicitar Contato</a>
