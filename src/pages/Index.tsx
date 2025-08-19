@@ -204,7 +204,7 @@ const Index = () => {
           {/* Why Choose Us - Enhanced */}
           <div className="text-center mb-20">
             <h2 className="text-4xl font-bold text-foreground mb-6">
-              POR QUE ESCOLHER A <span className="text-primary">MOVI?</span>
+              POR QUE ESCOLHER A <span className="text-primary">MOOVI?</span>
             </h2>
             <p className="text-xl text-muted-foreground mb-16 max-w-4xl mx-auto">
               Somos líderes do mercado porque entregamos resultados excepcionais e consideramos nossos colaboradores nosso maior patrimônio.
